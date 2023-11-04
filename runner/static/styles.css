@@ -1,0 +1,107 @@
+#profile-pic-container, #profile-info #info #bio, #top-container div {
+  border: 2px solid white;
+}
+
+#profile-info #info #bio, #profile, .body, .padded {
+  padding: 2%;
+}
+
+* {
+  font-family: Open Sans, Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
+textarea, input {
+  background-color: rgb(233, 87, 147);
+}
+
+body {
+  background-color: rgb(97, 12, 159);
+  height: 100%;
+  width: 100%;
+}
+
+.my-navbar {
+  background-color: rgb(233, 87, 147);
+  overflow: hidden;
+  margin: 0;
+  padding: 2px;
+}
+.my-navbar #left-side {
+  display: flex;
+  flex-direction: row;
+}
+.my-navbar #left-side img {
+  width: 100%;
+  height: 100%;
+}
+.my-navbar div {
+  padding: 2px;
+}
+
+.my-navbar a {
+  float: left;
+  display: flex;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.my-navbar a:hover {
+  animation: font-color-light-to-grey 0.25s ease-in;
+  color: black;
+}
+
+@keyframes font-color-light-to-grey {
+  from {
+    color: white;
+  }
+  to {
+    color: black;
+  }
+}
+nav {
+  background-color: rgb(233, 87, 147);
+}
+
+.brand-name {
+  font-size: 20px;
+}
+
+#top-container {
+  background-color: rgb(218, 12, 129);
+}
+#profile-info {
+  display: flex;
+  margin-bottom: 2%;
+}
+#profile-info div {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+#profile-info #info {
+  min-width: 50%;
+}
+#profile-info #info #bio {
+  margin-bottom: 2%;
+  min-height: 70%;
+}
+#profile-info #follow-counts {
+  max-width: 25%;
+}
+
+#profile-pic-container {
+  aspect-ratio: 1/1;
+  width: 45vh;
+  height: auto;
+  overflow: hidden;
+}
+#profile-pic-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=styles.css.map */

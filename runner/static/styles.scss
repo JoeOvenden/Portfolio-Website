@@ -1,0 +1,145 @@
+$theme-color1: rgb(233, 87, 147);
+$theme-color2: rgb(218, 12, 129);
+$theme-color3: rgb(148, 11, 146);
+$theme-color4: rgb(97, 12, 159);
+
+$theme-color-light: rgb(255, 143, 189);
+
+$font-color-light: white;
+$font-color-grey: #c5c5c5;
+
+%bordered {
+    border: 2px solid white;
+}
+
+%padded {
+    padding: 2%;
+}
+
+.padded {
+    @extend %padded;
+}
+
+* {
+    font-family: Open Sans, Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+textarea, input {
+    background-color: $theme-color1;
+}
+
+body {
+    background-color: $theme-color4;
+    height: 100%;
+    width: 100%;
+}
+
+.my-navbar {
+    background-color: $theme-color1;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 2px;
+
+    #left-side {
+        display: flex;
+        flex-direction: row;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    div {
+        padding: 2px;
+    }
+}
+
+.my-navbar a {
+    float: left;
+    display: flex;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.my-navbar a:hover {
+    animation: font-color-light-to-grey 0.25s ease-in;
+    color: black;
+}
+
+@keyframes font-color-light-to-grey {
+    from {
+        color: $font-color-light
+    }
+    to {
+        color: black;
+    }
+}
+
+nav {
+    background-color: $theme-color1;
+}
+
+.brand-name {
+    font-size: 20px;
+}
+
+.body {
+    @extend %padded;
+}
+
+#top-container {
+    background-color: $theme-color2;
+
+    div {
+        @extend %bordered;
+    }
+}
+
+#profile {
+    @extend %padded;
+}
+
+#profile-info {
+    display: flex;
+    margin-bottom: 2%;
+
+    div {
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    #info {
+        min-width: 50%;
+        
+        #bio {
+            @extend %bordered;
+            @extend %padded;
+            margin-bottom: 2%;
+            min-height: 70%;
+        }
+    }
+
+    #follow-counts {
+        max-width: 25%;
+    }
+}
+
+#profile-pic-container {
+    @extend %bordered;
+    aspect-ratio: 1/1;
+    width: 45vh;
+    height: auto;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
