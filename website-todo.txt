@@ -59,8 +59,16 @@ Activities
 Users followed box on profile page:
 	- Show 6 and have "show all" button that brings up a bigger box with a scroll and search?
 
+Celebrations page
+	- Basically a statistics page but try to put as much wierd and wonderful css and javascript in there as possible
+	- "You must have run at least 1km to celebrate."
+	- Button that just says "Celebrate"
 
+	CSS
+	- Backwards and forwards elements using left or top or whatever
+	- Transform
 
+Make logo of running man go backwards and forwards
 
 
 

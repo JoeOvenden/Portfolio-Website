@@ -10,6 +10,12 @@ class User(AbstractUser):
     account_creation_date = models.DateField(auto_now_add=True)
     follower_count = models.IntegerField(default=0)
     following_count = models.IntegerField(default=0)
+    total_km_run = models.DecimalField(decimal_places=2, max_digits=10, default=0)
+    """
+    Total Km run
+    Longest distance
+
+    """
 
 
 class Follow(models.Model):
