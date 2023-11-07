@@ -9,23 +9,46 @@
 {% block body %}
 
     <div id="top-container">
-        <div>
+        <div class="padded">
+            <h3>Create a new running event</h3>
             <form action="{% url 'create_event' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <table>
                     {{ form.as_table }}
                     <tr>
+                        <th>Route upload method:</th>
+                        <td>
+                            <label>
+                                <input type="radio" name="uploadMethod" value="gpx">Upload gpx file
+                            </label>
+                            <br>
+                            <label>
+                                <input type="radio" name="uploadMethod" value="manual">Choose start end point manually
+                            </label>
+                        </td>
+                    </tr>
+                    <tr id="routeMapRow" style="display: none;">
+                        <th>Route Map:</th>
+                        <td><div id="routeMap"></div></td>
+                    </tr>
+                    <tr id="startMapRow" style="display: none;">
                         <th>Start point:</th>
                         <td>
                             <div id="startMap"></div>
-                            <p id="startCoordinates" style="display: none;">Coordinates: <span id="startLatitude"></span>, <span id="startLongitude"></span></p>
+                            <p id="startCoordinates">
+                                Latitude: <input type="number" id="startLatitude" name="startLatitude">
+                                Longitude <input type="number" id="startLongitude" name="startLongitude">
+                            </p>
                         </td>
                     </tr>
-                    <tr>
+                    <tr id="endMapRow" style="display: none;">
                         <th>End point:</th>
                         <td>
                             <div id="endMap"></div>
-                            <p id="endCoordinates" style="display: none;">Coordinates: <span id="endLatitude"></span>, <span id="endLongitude"></span></p>
+                            <p id="endCoordinates"">
+                                Latitude: <input type="text" id="endLatitude" name="endLatitude">
+                                Longitude: <input id="endLongitude" name="endLongitude">
+                            </p>
                         </td>
                     </tr>
                 </table>
@@ -41,6 +64,7 @@
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
         <script src="{% static 'map.js' %}"></script>
     
 {% endblock %}

@@ -1,0 +1,6 @@
+- Added events
+    - Currently one can upload gpx files but nothing has been done with that yet
+    - Playing around with embedding leafletjs maps in the create event page, however
+       I think it makes more sense for one to have to upload a gpx file and then the 
+       gpx files to set the start and end points
+- Added 404 page

@@ -242,15 +242,27 @@ def create_event(request):
                 "error_message": "Invalid form"
             })
         
+        # If user has uploaded a gpx file
+        if request.POST["uploadMethod"] == "gpx":
+            pass
+        
+        # If user has manually put in start and end coordinates
+        elif request.POST["uploadMethod"] == "manual":
+            pass
+        print(form.cleaned_data)
+        print("POST:")
+        print(request.POST)
+        """
         # Save the form, (and so saving the event details)
         form.save()
 
         # Set the event organiser and then save
         event.organiser = request.user
         event.save()
+        """
 
         # Redirect user to the new event page
-        return redirect(f'event/{event.id}')
+        # return redirect(f'event/{event.id}')
 
 
     form = EventForm()

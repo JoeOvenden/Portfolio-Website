@@ -38,7 +38,7 @@ textarea::placeholder, input::placeholder {
   color: white;
 }
 
-#startMap, #endMap {
+#routeMap, #startMap, #endMap {
   height: 300px;
   width: 600px;
 }

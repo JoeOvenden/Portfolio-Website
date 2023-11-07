@@ -50,6 +50,10 @@ Activities
 	- Likes/dislikes
 	- Statistics
 	
+
+
+---map.js---
+- Changing coordinate input elements should then move the map markers
 	
 
 

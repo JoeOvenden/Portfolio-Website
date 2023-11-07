@@ -15,7 +15,7 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = ["date", "time", "description", "route"]
         widgets = {
-            "description": forms.Textarea(attrs={"cols": 60, "rows": 10}),
+            "description": forms.Textarea(attrs={"cols": 60, "rows": 6}),
             "date": forms.SelectDateWidget(),
             "time": forms.TimeInput(attrs={'type': 'time'}, format='%H:%M'),
         }

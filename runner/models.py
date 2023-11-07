@@ -30,8 +30,10 @@ class Event(models.Model):
     date = models.DateField(default=datetime.date.today)
     time = models.TimeField(default=datetime.datetime.now().time())
     description = models.CharField(max_length=400)
-    # start_point = gis_models.PointField()
-    # end_point = gis_models.PointField()
+    start_point_lat = models.DecimalField(max_digits=10, decimal_places=8)
+    start_point_lng = models.DecimalField(max_digits=10, decimal_places=8)
+    end_point_lat = models.DecimalField(max_digits=10, decimal_places=8)
+    end_point_lng = models.DecimalField(max_digits=10, decimal_places=8)
     route = models.FileField(upload_to='gpx_files', blank=True)
 """
 FROM NETWORK
