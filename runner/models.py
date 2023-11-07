@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser, Group
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+import datetime
 
 
 class User(AbstractUser):
@@ -22,6 +23,16 @@ class Follow(models.Model):
     user_following = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followings")
     user_followed = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followers")
 
+
+class Event(models.Model):
+    organiser = models.ForeignKey(User, on_delete=models.SET_NULL, related_name="events_organised", null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(default=datetime.date.today)
+    time = models.TimeField(default=datetime.datetime.now().time())
+    description = models.CharField(max_length=400)
+    # start_point = gis_models.PointField()
+    # end_point = gis_models.PointField()
+    route = models.FileField(upload_to='gpx_files', blank=True)
 """
 FROM NETWORK
 

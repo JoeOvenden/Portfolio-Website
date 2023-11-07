@@ -72,7 +72,7 @@ def profile(request, username):
         user = User.objects.get(username=username)
     
     except User.DoesNotExist:
-        return render(request, "runner/404-profile.html")
+        return redirect('404')
 
     if request.user.is_anonymous or not user.followers.filter(user_following=request.user).exists():
         is_following = False
@@ -224,3 +224,51 @@ def user_search(request):
     return render(request, "runner/user-search.html", {
         "profiles": profiles
     })
+
+
+def create_event(request):
+    # If user has created a new event
+    if request.method == "POST":
+
+        # Make a new event object, and then load the form information into a profile form
+        # with the event linked to it
+        event = Event()
+        form = EventForm(request.POST, request.FILES, instance=event)
+
+        # Check if the form is invalid and if so return the form with an error message
+        if not form.is_valid():
+            return render(request, "runner/create_event.html", {
+                "form": form,
+                "error_message": "Invalid form"
+            })
+        
+        # Save the form, (and so saving the event details)
+        form.save()
+
+        # Set the event organiser and then save
+        event.organiser = request.user
+        event.save()
+
+        # Redirect user to the new event page
+        return redirect(f'event/{event.id}')
+
+
+    form = EventForm()
+    return render(request, "runner/create_event.html", {
+        "form": form
+    })
+
+
+def event_page(request, event_id):
+    try:
+        event = Event.objects.get(id = event_id)
+    except Event.DoesNotExist:
+        return redirect('404')
+    
+    return render(request, "runner/event.html", {
+        "event": event
+    })
+
+
+def page_not_found(request):
+    return render(request, "runner/404.html")

@@ -12,5 +12,8 @@ urlpatterns = [
     path("edit_profile", views.edit_profile, name="edit_profile"),
     path("follow", views.follow, name="follow"),
     path("celebrate/<str:username>", views.celebrate, name="celebrate"),
-    path("user_search", views.user_search, name="user_search")
+    path("user_search", views.user_search, name="user_search"),
+    path("create_event", views.create_event, name="create_event"),
+    path("event/<int:event_id>", views.event_page, name="event"),
+    path("404", views.page_not_found, name="404")
 ]

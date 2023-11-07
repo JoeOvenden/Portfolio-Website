@@ -1,0 +1,46 @@
+{% extends "runner/layout.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+{% endblock %}
+
+{% block body %}
+
+    <div id="top-container">
+        <div>
+            <form action="{% url 'create_event' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                    <tr>
+                        <th>Start point:</th>
+                        <td>
+                            <div id="startMap"></div>
+                            <p id="startCoordinates" style="display: none;">Coordinates: <span id="startLatitude"></span>, <span id="startLongitude"></span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>End point:</th>
+                        <td>
+                            <div id="endMap"></div>
+                            <p id="endCoordinates" style="display: none;">Coordinates: <span id="endLatitude"></span>, <span id="endLongitude"></span></p>
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" value="Submit">
+            </form>
+            {% if error_message %}
+                <h5>{{ error_message }}</h5>
+            {% endif %}
+        </div>
+    </div>    
+
+        {% load static %}
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+        <script src="{% static 'map.js' %}"></script>
+    
+{% endblock %}
