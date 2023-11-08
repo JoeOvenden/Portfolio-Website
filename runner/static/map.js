@@ -1,14 +1,28 @@
-let points = {
+// Initially set start and end coordinates to null
+let markers = {
     "start": null,
     "end": null
 };
 
+let startCoordinates = [51.505, -0.09];
+
+// Declare DOM elements for distance, duration and pace (defined when DOM content is loaded)
+let distanceInput = undefined;
+let durationInput = undefined;
+let paceInput = undefined;
+
 let maps = {};
 
+// Hide file selection row, because initially no radio button has been clicked
 let file_upload_row = document.querySelector("#id_route").parentElement.parentElement;
 file_upload_row.style.display = "none";
 
 function setRowDisplay(mapType, display) {
+    /*
+     * Changes a maps display type.
+     * When the maps go from being hidden to shown, map.invalidateSize() needs to be
+     * called, otherwise they don't know how big they are and the tiling doesn't work.
+     */
     document.querySelector(`#${mapType}MapRow`).style.display = display;
     if (display == "table-row") {
         maps[mapType].invalidateSize();
@@ -16,59 +30,41 @@ function setRowDisplay(mapType, display) {
 }
 
 function showGpx() {
-    // Show gpx
+    // Shows gpx
     file_upload_row.style.display = "table-row";
     setRowDisplay("route", "table-row");
 
-    // Hide start and end point maps
+    // Hides start and end point maps
     setRowDisplay("start", "none");
     setRowDisplay("end", "none");
 }
 
 function showStartEnd() {
-    // Show start and end point maps
+    // Shows start and end point maps
     setRowDisplay("start", "table-row");
     setRowDisplay("end", "table-row");
 
-    // Hide gpx
+    // Hides gpx
     file_upload_row.style.display = "none";
     setRowDisplay("route", "none");
 }
 
-document.querySelectorAll('input[name="uploadMethod"]').forEach(function(radio) {
-    radio.addEventListener('change', function() {
-        // If upload method is by gpx, then show file upload row and route map row
-        if (this.value === 'gpx') {
-            showGpx();
-        } else if (this.value === 'manual') {
-            // Code to execute when "Choose start end point manually" is selected
-            showStartEnd();
-        }
-    });
-});
-
-function moveMapMarker(lat=undefined, lng=undefined, mapType) {
-    if (lat != undefined) {
-        points[mapType].lat = lat;
-    }
-    if (lng != undefined) {
-        points[mapType].lng = lng;
-    }
+// Moves map marker
+function moveMapMarker(mapType, latlng) {
+    markers[mapType].setLatLng(latlng);
+    maps[mapType].setView(latlng);
 }
 
+// Moves map marker and changes the values in the lat and lng input elements
 function setMapMarker(latlng, mapType) {
-    if (points[mapType] != null) {
-        maps[mapType].removeLayer(points[mapType]);
-    }
-    points[mapType] = L.marker([latlng["lat"], latlng["lng"]]).addTo(maps[mapType]);
-    maps[mapType].setView([latlng["lat"], latlng["lng"]], 13);
-    document.querySelector(`#${mapType}Coordinates`).style.display = 'block';
+    moveMapMarker(mapType, latlng);
     document.querySelector(`#${mapType}Latitude`).value = latlng["lat"].toFixed(5);
     document.querySelector(`#${mapType}Longitude`).value = latlng["lng"].toFixed(5);
 }
 
+// Creates and returns a map
 function createMap(mapId) {
-    let map = L.map(mapId).setView([51.505, -0.09], 13);
+    let map = L.map(mapId).setView(startCoordinates, 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -76,36 +72,158 @@ function createMap(mapId) {
     return map;
 }
 
+// Creates a map for the start and end coordinates and adds event listener
 ["start", "end"].forEach(mapType => {
-    let map = createMap(`${mapType}Map`);
-    map.on('click', e => setMapMarker(e.latlng, mapType));
-    maps[mapType] = map;
+    maps[mapType] = createMap(`${mapType}Map`);
+    markers[mapType] = L.marker(startCoordinates).addTo(maps[mapType]);
+    maps[mapType].on('click', e => setMapMarker(e.latlng, mapType));
 });
 
+// Create route map
 maps["route"] = createMap("routeMap");
 
-document.querySelector("#id_route").addEventListener('change', event => {
-    // document.querySelector("#routeMapRow").style.display = "table-row";
-    let gpxFile = event.target.files[0];
+function durationToSeconds(duration) {
+    // Converts duration in format "hh:mm" to seconds
+    let paceParts = duration.split(":");
+    let hours = parseInt(paceParts[0]);
+    let minutes = parseInt(paceParts[1]);
+    return hours * 3600 + minutes * 60;
+}
 
-    let reader = new FileReader();
-    reader.onload = function() {
-        let gpxData = reader.result;
-        new L.GPX(gpxData, {
-            async: true,
-            marker_options: {
-                startIconUrl: 'media/icons/pin-icon-start.png',
-                endIconUrl: 'media/icons/pin-icon-end.png',
-                shadowUrl: null
+function paceToSeconds(pace) {
+    // Converts pace in format "mm:ss" to seconds
+    let paceParts = pace.split(":");
+    let minutes = parseInt(paceParts[0]);
+    let seconds = parseInt(paceParts[1]);
+    return (minutes * 60) + seconds;
+}
+
+function secondsToPace(paceInSeconds) {
+    // Converts a pace in seconds to the format "mm:ss"
+    let minutes = Math.floor(paceInSeconds / 60);
+    let seconds = Math.floor(paceInSeconds % 60);
+    let paceString = minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
+    return paceString;
+}
+
+function calculateDuration(pace, distance) {
+    // Takes pace in format "mm:ss" and distance in kms and gives duration in format "hh:mm"
+    let paceInSeconds = paceToSeconds(pace);
+    let distanceInKilometers = parseFloat(distance);
+
+    let durationInSeconds = paceInSeconds * distanceInKilometers;
+    // Convert duration to "mm:ss" format
+    let hours = Math.floor(durationInSeconds / 3600);
+    let minutes = Math.floor((durationInSeconds % 3600) / 60);
+    let durationString = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
+    return durationString;
+}
+
+function setDuration(pace) {
+    // Sets duration of DOM element based off of distance and pace
+    durationInput.value = calculateDuration(pace, distanceInput.value);
+}
+
+function setPace(duration) {
+    // Sets pace of DOM element based off of distance and duration
+    let durationInSeconds = durationToSeconds(duration);
+    let paceInSeconds = durationToSeconds(duration) / distanceInput.value;
+    paceInput.value = secondsToPace(paceInSeconds);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Get DOM elements for distance, duration and pace
+    distanceInput = document.querySelector("#id_distance");
+    durationInput = document.querySelector("#id_duration");
+    paceInput = document.querySelector("#id_pace");
+
+    // When the distance changes, change the duration to match based on the pace
+    distanceInput.addEventListener('change', () => {
+        setDuration(paceInput.value);
+    });
+
+    // When the duration changes, change the pace to match
+    durationInput.addEventListener('change', () => {
+        setPace(durationInput.value);
+    });
+
+    // When the pace changes, change the duration to match
+    paceInput.addEventListener('change', () => {
+        setDuration(paceInput.value);
+    });
+
+    // Adds event listeners to upload method radio buttons
+    document.querySelectorAll('input[name="uploadMethod"]').forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            // If upload method is by gpx, then show file upload row and route map row
+            if (this.value === 'gpx') {
+                showGpx();
+            } 
+            // Otherwise for manual, show start and end point map rows
+            else if (this.value === 'manual') {
+                showStartEnd();
             }
-        }).on('addpoint', e => {
-            setMapMarker(e.point._latlng, e.point_type);
-        }).on('loaded', function(e) {
-            maps["route"].fitBounds(e.target.getBounds());
-        }).addTo(maps["route"]);
-    }
+        });
+    });
 
-    reader.readAsText(gpxFile);
+
+    // Event listener for when a file is uploaded
+    document.querySelector("#id_route").addEventListener('change', event => {
+
+        // Get the gpx file
+        let gpxFile = event.target.files[0];
+
+        // Setup reader with onload function
+        let reader = new FileReader();
+        reader.onload = function() {
+            let gpxData = reader.result;
+            new L.GPX(gpxData, {
+                async: true,
+                marker_options: {
+                    startIconUrl: 'media/icons/pin-icon-start.png',
+                    endIconUrl: 'media/icons/pin-icon-end.png',
+                    shadowUrl: null
+                }
+            }).on('addpoint', e => {
+                // Start and end markers set
+                setMapMarker(e.point._latlng, e.point_type);
+            }).on('loaded', function(e) {
+                maps["route"].fitBounds(e.target.getBounds());
+                distanceInput.value = (e.target.get_distance() / 1000).toFixed(1);
+                durationInput.value = calculateDuration(paceInput.value, distanceInput.value);
+            }).addTo(maps["route"]);
+        }
+
+        // Gpx file is read and onload function is triggered
+        reader.readAsText(gpxFile);
+    });
+
+
+    // Adds event listeners for each coordinate input element
+    ["start", "end"].forEach(mapType => {
+        ["Latitude", "Longitude"].forEach(latOrLng => {
+
+            // Get coordinate input element and add event listener
+            let coordinateInput = document.querySelector(`#${mapType}${latOrLng}`);
+            if (latOrLng == "Latitude") {
+                coordinateInput.value = startCoordinates[0];
+            }
+            else {
+                coordinateInput.value = startCoordinates[1];
+            }
+
+            coordinateInput.addEventListener('change', () => {
+                let latlng = markers[mapType]._latlng;
+                if (latOrLng == "Latitude") {
+                    latlng["lat"] = coordinateInput.value;
+                }
+                else {
+                    latlng["lng"] = coordinateInput.value;
+                }
+                moveMapMarker(mapType, latlng);
+            });
+        })
+    })
+
 });
-
-document.querySelectorAll()

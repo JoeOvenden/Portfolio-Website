@@ -289,3 +289,8 @@ form {
 #people-followed {
     margin-top: 4%;
 }
+
+.event {
+    @extend %padded;
+    @extend %bordered;
+}

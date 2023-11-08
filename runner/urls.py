@@ -15,5 +15,6 @@ urlpatterns = [
     path("user_search", views.user_search, name="user_search"),
     path("create_event", views.create_event, name="create_event"),
     path("event/<int:event_id>", views.event_page, name="event"),
-    path("404", views.page_not_found, name="404")
+    path("404", views.page_not_found, name="404"),
+    path("events_search", views.events_search, name="events_search")
 ]

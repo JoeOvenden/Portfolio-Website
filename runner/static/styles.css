@@ -1,8 +1,8 @@
-#profile #profile-info #info #bio {
+.event, #profile #profile-info #info #bio {
   border: 2px solid white;
 }
 
-#profile #profile-info #info #bio, .body, .padded {
+.event, #profile #profile-info #info #bio, .body, .padded {
   padding: 2%;
 }
 

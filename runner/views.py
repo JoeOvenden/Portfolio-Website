@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
+from decimal import Decimal
 
 from .models import *
 from .forms import *
@@ -238,31 +239,27 @@ def create_event(request):
         # Check if the form is invalid and if so return the form with an error message
         if not form.is_valid():
             return render(request, "runner/create_event.html", {
-                "form": form,
-                "error_message": "Invalid form"
-            })
-        
+                "form": form
+        })
+    
+        event.date = form.cleaned_data["date"]
+        event.time = form.cleaned_data["time"]
+        event.description = form.cleaned_data["description"]
+        event.organiser = request.user
+
         # If user has uploaded a gpx file
         if request.POST["uploadMethod"] == "gpx":
-            pass
-        
-        # If user has manually put in start and end coordinates
-        elif request.POST["uploadMethod"] == "manual":
-            pass
-        print(form.cleaned_data)
-        print("POST:")
-        print(request.POST)
-        """
-        # Save the form, (and so saving the event details)
-        form.save()
+            event.route = request.FILES["route"]
+    
+        event.start_point_lat = Decimal(request.POST["startLatitude"]).quantize(Decimal('0.00000'))
+        event.start_point_lng = Decimal(request.POST["startLongitude"]).quantize(Decimal('0.00000'))
+        event.end_point_lat = Decimal(request.POST["endLatitude"]).quantize(Decimal('0.00000'))
+        event.end_point_lng = Decimal(request.POST["endLongitude"]).quantize(Decimal('0.00000'))
 
-        # Set the event organiser and then save
-        event.organiser = request.user
         event.save()
-        """
 
         # Redirect user to the new event page
-        # return redirect(f'event/{event.id}')
+        return redirect(f'event/{event.id}')
 
 
     form = EventForm()
@@ -284,3 +281,9 @@ def event_page(request, event_id):
 
 def page_not_found(request):
     return render(request, "runner/404.html")
+
+
+def events_search(request):
+    return render(request, "runner/events_search.html", {
+        "events": Event.objects.all()
+    })

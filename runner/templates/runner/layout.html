@@ -22,9 +22,10 @@
             <div class="links col-9">
                 {% if user.is_authenticated %}
                     <strong><a href="{% url 'profile' user.username %}">{{ user.username }}</a></strong>
+                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>   
                     <a class="nav-link" href="{% url 'create_event' %}">Create event</a>
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                     <a class="nav-link" href="{% url 'user_search' %}">Search for users</a>
+                    <a class="nav-link" href="{% url 'events_search' %}">Events</a>
                 {% else %}
                     <a class="nav-link" href="{% url 'login' %}">Log In</a>
                     <a class="nav-link" href="{% url 'register' %}">Register</a>

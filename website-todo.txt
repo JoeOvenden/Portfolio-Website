@@ -54,7 +54,8 @@ Activities
 
 ---map.js---
 - Changing coordinate input elements should then move the map markers
-	
+
+Try to break create event
 
 
 
@@ -79,3 +80,4 @@ Make logo of running man go backwards and forwards
 ---------------BUGS------------------------
 - Not all images take up the same space. Some images are smaller
 - When you reduce the width of the screen on the profile page, the profile picture is no longer a circle
+- Profile bio doesn't keep line breaks
