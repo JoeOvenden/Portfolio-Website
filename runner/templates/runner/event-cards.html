@@ -1,0 +1,9 @@
+<div id="events">
+    {% for event in events %}
+        <div id="{{ event.id }}" class="event">
+            <h5 id="title"><a href="{% url 'event' event.id %}">{{ event.title }}</a></h5>
+            <p id="description">{{ event.description }}</p>
+            {{ event.date }}, {{ event.time }}
+        </div>
+    {% endfor %}
+</div>

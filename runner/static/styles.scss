@@ -294,3 +294,26 @@ form {
     @extend %padded;
     @extend %bordered;
 }
+
+.flex-row {
+    display: flex;
+}
+
+#key {
+    margin-top: 2%;
+
+    h5 {
+        display: flex;
+        align-items: center;
+    }
+}
+
+#iconContainer {
+    @extend %square-image-container;
+    width: 32px;
+    height: 32px;
+
+    img {
+        @extend %square-image;
+    }
+}

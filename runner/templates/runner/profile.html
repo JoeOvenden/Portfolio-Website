@@ -55,14 +55,23 @@
                     {% endif %}
                 </div>
             </div>
-            <hr>
             {% if user == profile %}
-                <div id="user-follows-section">
-                    <h3>Users followed</h3>
-                    <div id="user-follows">
-                        {% include "runner/profile-cards.html" with profiles=user_follows %}
+                {% if user_follows %}
+                    <hr>
+                    <div id="user-follows-section">
+                        <h3>Users followed</h3>
+                        <div id="user-follows">
+                            {% include "runner/profile-cards.html" with profiles=user_follows %}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
+            {% endif %}
+            {% if events %}
+                <hr>
+                <h3>{% if user == profile %}Your{% else %}{{ profile.username }}'s{% endif %} Events </h3>
+                
+                {% include 'runner/event-cards.html' with events=events %}
+
             {% endif %}
         </div>
     </div>

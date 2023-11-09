@@ -27,7 +27,47 @@
                     {% endif %}
                     {{ event.duration.minute }} minutes</p>
                 <p>Pace: {{ event.pace.hour|stringformat:"02d" }}:{{ event.pace.minute|stringformat:"02d" }} per km</p>    
-                    
+            </div>
+            <div id="maps">
+                <table>
+                    {% if event.route %}
+                        <p style="display: none;" id="gpxFileLoc">{{ MEDIA_URL }}{{ event.route }}</p>
+                        <p id="displayType" style="display: none;">route</p>
+                        <tr>
+                            <th>Route:</th>
+                            <td>
+                                <div id=routeMap></div>
+                                <div id="key" class="flex-row">
+                                    <div id="iconContainer">
+                                        <img src="{{ MEDIA_URL }}icons/pin-icon-start.png">
+                                    </div>
+                                    <h5> = START </h5>
+                                    &nbsp;
+                                    <div id="iconContainer">
+                                        <img src="{{ MEDIA_URL }}icons/pin-icon-end.png">
+                                    </div>
+                                    <h5> = FINISH </h5>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                    <p id="displayType" style="display: none;">startEnd</p>
+                        <tr>
+                            <th>Start point:</th>
+                            <td>
+                                <div id=startMap></div>
+                                <p>Coordinates: <span id="startLatitude">{{ event.start_point_lat }}</span>, <span id="startLongitude">{{ event.start_point_lng }}</span></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>End point:</th>
+                            <td>
+                                <div id=endMap></div>
+                                <p>Coordinates: <span id="endLatitude">{{ event.end_point_lat }}</span>, <span id="endLongitude">{{ event.end_point_lng }}</span></p>
+                            </td>
+                        </tr>
+                    {% endif %}
+                </table>
             </div>
         </div>
     </div>
@@ -36,5 +76,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
+     <script type="module" src="{% static 'event.js' %}"></script>
     
 {% endblock %}

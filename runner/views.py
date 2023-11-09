@@ -80,14 +80,19 @@ def profile(request, username):
     else:
         is_following = True
 
+    # Get all the people that the user follows
     follow_objects = user.followings.all()  # Follow objects where user is the follower
     user_follows = [follow_object.user_followed for follow_object in follow_objects]
+    
+    # Get all the users events
+    events = user.events_organised.all()
 
     data = {
         "profile": user,
         "follower_count": user.follower_count,
         "following_count": user.following_count,
-        "is_following": is_following
+        "is_following": is_following,
+        "events": events
     }
     data.update(paginate(user_follows, 6, "user_follows"))
 

@@ -6,12 +6,12 @@
   padding: 2%;
 }
 
-#profile-cards #profile-card #profile-pic-container, #profile #profile-info #pic #profile-pic-container {
+#iconContainer, #profile-cards #profile-card #profile-pic-container, #profile #profile-info #pic #profile-pic-container {
   aspect-ratio: 1/1;
   overflow: hidden;
 }
 
-#profile #profile-info #pic #profile-pic-container img, #profile-cards #profile-card #profile-pic-container img {
+#iconContainer img, #profile #profile-info #pic #profile-pic-container img, #profile-cards #profile-card #profile-pic-container img {
   width: 96%;
   height: 96%;
   object-fit: cover;
@@ -226,6 +226,23 @@ form {
 }
 #people-followed {
   margin-top: 4%;
+}
+
+.flex-row {
+  display: flex;
+}
+
+#key {
+  margin-top: 2%;
+}
+#key h5 {
+  display: flex;
+  align-items: center;
+}
+
+#iconContainer {
+  width: 32px;
+  height: 32px;
 }
 
 /*# sourceMappingURL=styles.css.map */
