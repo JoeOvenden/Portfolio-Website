@@ -293,6 +293,11 @@ form {
 .event {
     @extend %padded;
     @extend %bordered;
+    display: flex;
+
+    p {
+        margin-bottom: 0.2rem;
+    }
 }
 
 .flex-row {
@@ -316,4 +321,47 @@ form {
     img {
         @extend %square-image;
     }
+}
+
+#icon-404 {
+    width: 20%;
+    height: 20%;
+}
+
+#app {
+    .range-slider {
+        width: 300px;
+        margin: auto;
+        text-align: center;
+        position: relative;
+        height: 6em;
+      }
+      
+      .range-slider input[type=range] {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+      
+      input[type=number] {
+        border: 1px solid #ddd;
+        text-align: center;
+        font-size: 1.6em;
+        -moz-appearance: textfield;
+      }
+      
+      input[type=number]::-webkit-outer-spin-button,
+      input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      
+      input[type=number]:invalid,
+      input[type=number]:out-of-range {
+        border: 2px solid #ff6347;
+      }
+      
+      input[type=range] {
+        -webkit-appearance: none;
+        width: 100%;
+      }
 }

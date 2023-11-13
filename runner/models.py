@@ -39,6 +39,35 @@ class Event(models.Model):
     end_point_lat = models.DecimalField(max_digits=10, decimal_places=5)
     end_point_lng = models.DecimalField(max_digits=10, decimal_places=5)
     route = models.FileField(upload_to='gpx_files', blank=True)
+
+    def __str__(self):
+        return f"{self.date}: {self.distance}km run"
+
+    def formatted_duration(self):
+        text = ""
+        if self.duration.hour:
+            text += str(self.duration.hour) + " hour"
+            if self.duration.hour != 1:
+                text += "s"
+        
+        if self.duration.minute:
+            text += f" {self.duration.minute} minute"
+            if self.duration.minute  != 1:
+                text += "s"
+        return text
+    
+    def formatted_pace(self):
+        return "{:02d}:{:02d} per km".format(self.pace.hour, self.pace.minute)
+    
+    def formatted_distance(self):
+        if self.distance % 1 == 0:
+            formatted_distance = "{:.0f} km".format(self.distance)
+        else:
+            formatted_distance = "{:.1f} km".format(self.distance)
+
+        if self.distance != 1:
+            formatted_distance += "s"
+        return formatted_distance
 """
 FROM NETWORK
 

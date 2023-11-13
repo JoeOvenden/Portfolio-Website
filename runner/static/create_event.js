@@ -1,5 +1,6 @@
 
 import { createMap } from './map.js';
+import { getLocation } from './geolocation.js';
 
 // Initially set start and end coordinates to null
 let markers = {
@@ -7,7 +8,14 @@ let markers = {
     "end": null
 };
 
-let initialCoordinates = [51.505, -0.09];
+var initialCoordinates = [51.505, -0.09];
+
+function initialiseMaps(position) {
+    initialCoordinates = [position.coords.latitude, position.coords.longitude];
+    createMaps(initialCoordinates);
+}
+
+getLocation(initialiseMaps);
 
 // Declare DOM elements for distance, duration and pace (defined when DOM content is loaded)
 let distanceInput = undefined;
@@ -65,15 +73,17 @@ function setMapMarker(latlng, mapType) {
     document.querySelector(`#${mapType}Longitude`).value = latlng["lng"].toFixed(5);
 }
 
-// Creates a map for the start and end coordinates and adds event listener
-["start", "end"].forEach(mapType => {
-    maps[mapType] = createMap(`${mapType}Map`, initialCoordinates);
-    markers[mapType] = L.marker(initialCoordinates).addTo(maps[mapType]);
-    maps[mapType].on('click', e => setMapMarker(e.latlng, mapType));
-});
+function createMaps(initialCoordinates) {
+    // Creates a map for the start and end coordinates and adds event listener
+    ["start", "end"].forEach(mapType => {
+        maps[mapType] = createMap(`${mapType}Map`, initialCoordinates);
+        markers[mapType] = L.marker(initialCoordinates).addTo(maps[mapType]);
+        maps[mapType].on('click', e => setMapMarker(e.latlng, mapType));
+    });
 
-// Create route map
-maps["route"] = createMap("routeMap", initialCoordinates);
+    // Create route map
+    maps["route"] = createMap("routeMap", initialCoordinates);
+}
 
 function durationToSeconds(duration) {
     // Converts duration in format "hh:mm" to seconds
@@ -218,5 +228,4 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         })
     })
-
 });

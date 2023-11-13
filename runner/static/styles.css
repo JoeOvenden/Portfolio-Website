@@ -228,6 +228,13 @@ form {
   margin-top: 4%;
 }
 
+.event {
+  display: flex;
+}
+.event p {
+  margin-bottom: 0.2rem;
+}
+
 .flex-row {
   display: flex;
 }
@@ -243,6 +250,41 @@ form {
 #iconContainer {
   width: 32px;
   height: 32px;
+}
+#icon-404 {
+  width: 20%;
+  height: 20%;
+}
+
+#app .range-slider {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  height: 6em;
+}
+#app .range-slider input[type=range] {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+#app input[type=number] {
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 1.6em;
+  -moz-appearance: textfield;
+}
+#app input[type=number]::-webkit-outer-spin-button,
+#app input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+#app input[type=number]:invalid,
+#app input[type=number]:out-of-range {
+  border: 2px solid #ff6347;
+}
+#app input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
 }
 
 /*# sourceMappingURL=styles.css.map */

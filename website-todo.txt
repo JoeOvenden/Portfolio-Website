@@ -75,7 +75,11 @@ Celebrations page
 
 Make logo of running man go backwards and forwards
 
-
+Make sure users can't make events backwards in time (or within say 30 minutes)
+Split users events into finished/active
+Paginate events
+Paginate users
+Filter events by proximity
 
 ---------------BUGS------------------------
 - Not all images take up the same space. Some images are smaller

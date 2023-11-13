@@ -3,10 +3,33 @@
 {% block body %}
 
     <div id="top-container">
+
         <div>
-            <form action="{% url 'user_search' %}" method="post">
+            <!-- Filters form -->
+            <form action="{% url 'events_search' %}" method="post">
                 {% csrf_token %}
-                <input type="text" placeholder="Search for users here..." name="user_search">
+                <input type="text" placeholder="Search for events here..." name="user_search">
+                
+                <table>
+                    <tr>
+                    {% for field in form %}
+                        <th>{{ field.label }}</th>
+                        <th>
+                            {{ field }}
+                        </th>
+                        {% if forloop.counter|divisibleby:"2" %}
+                            </tr><tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tr>
+                </table>
+                {% if form.errors %}
+                    <br>
+                    <h5>Form errors:</h5>
+                {% endif %}
+                {% for field_name, error in form.errors.items %}
+                    <ul>{{ field_name }}: {{ error }}</ul>
+                {% endfor %}
                 <button>Submit</button>
             </form>
         </div>
@@ -16,6 +39,6 @@
     </div>
 
     {% load static %}
-    
-    
+    <script src="{% static 'geolocation.js' %}"></script>
+
 {% endblock %}

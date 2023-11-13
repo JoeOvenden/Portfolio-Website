@@ -20,13 +20,9 @@
             <hr>
             <div>
                 <h5>Run details</h5>
-                <p>Distance: {{ event.distance }}km{% if event.distance != 1%}s{% endif %}</p>
-                <p>Duration: 
-                    {% if event.duration.hour %}
-                        {{ event.duration.hour }} hour{% if event.duration.hour > 1 %}s{% endif %}
-                    {% endif %}
-                    {{ event.duration.minute }} minutes</p>
-                <p>Pace: {{ event.pace.hour|stringformat:"02d" }}:{{ event.pace.minute|stringformat:"02d" }} per km</p>    
+                <p>Distance: {{ event.formatted_distance }}</p>
+                <p>Duration: {{ event.formatted_duration }}
+                <p>Pace: {{ event.formatted_pace }}</p>    
             </div>
             <div id="maps">
                 <table>

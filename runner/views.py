@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from decimal import Decimal
+import datetime
 
 from .models import *
 from .forms import *
@@ -288,7 +289,62 @@ def page_not_found(request):
     return render(request, "runner/404.html")
 
 
+def get_events(start_date=None, end_date=None, min_distance=None, max_distance=None, 
+               title_filter=None):
+    """"
+    Returns events from today onwards with optional filters for:
+        dates from start_date
+        dates before or on end_date
+        minimum distance
+        maximum distance
+        title partial
+
+    Events are returned as a list sorted in chronological order
+    """
+    events = Event.objects.filter(date__gte=datetime.date.today())
+
+    if start_date is not None:
+        events = events.filter(date__gte=start_date)
+
+    if end_date is not None:
+        events = events.filter(date__lte=end_date)
+
+    if min_distance is not None:
+        events = events.filter(distance__gte=min_distance)
+    
+    if max_distance is not None:
+        events = events.filter(distance__lte=max_distance)
+
+    if title_filter is not None:
+        events = events.filter(title__icontains=title_filter)
+
+    events = sorted(events, key=lambda e : e.date)
+    return events
+
+
 def events_search(request):
-    return render(request, "runner/events_search.html", {
-        "events": Event.objects.all()
-    })
+    def display(events=get_events(), form=EventFilterForm()):
+        return render(request, "runner/events_search.html", {
+            "form": form,
+            "events": events
+        })
+    
+    if request.method == "POST":
+        filter_form = EventFilterForm(request.POST)
+        
+        # If the form is not valid then return page back to them with the form
+        if not filter_form.is_valid():
+            return display(form=filter_form)
+        
+        start_date = filter_form.cleaned_data["start_date"]
+        end_date = filter_form.cleaned_data["end_date"]
+        min_distance = filter_form.cleaned_data["min_distance"]
+        max_distance = filter_form.cleaned_data["max_distance"]
+        title_filter = request.POST["user_search"]
+        # Get all events between the start and end date filters
+        events = get_events(start_date=start_date, end_date=end_date, min_distance=min_distance, 
+                            max_distance=max_distance, title_filter=title_filter)
+        return display(events=events, form=filter_form)
+
+    # Display page
+    return display()
