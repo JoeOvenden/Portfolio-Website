@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from decimal import Decimal
+from geopy.distance import geodesic
 import datetime
 
 from .models import *
@@ -354,6 +355,12 @@ def get_events(start_date=None, end_date=None, min_distance=None, max_distance=N
     return events
 
 
+def radius_filter(events, latlng, radius):
+    def distance(event):    # Return distance in km from event to marked location (latlng)
+        return geodesic(latlng, (event.start_point_lat, event.start_point_lng)).kilometers
+    events = list(filter(lambda event: distance(event) <= radius, events))
+    return events
+
 def events_search(request):
     def display(events=get_events(), form=EventFilterForm()):
         return render(request, "runner/events_search.html", {
@@ -373,9 +380,20 @@ def events_search(request):
         min_distance = filter_form.cleaned_data["min_distance"]
         max_distance = filter_form.cleaned_data["max_distance"]
         title_filter = request.POST["user_search"]
+
         # Get all events between the start and end date filters
         events = get_events(start_date=start_date, end_date=end_date, min_distance=min_distance, 
                             max_distance=max_distance, title_filter=title_filter)
+        
+        latlng_str = request.POST["latlng"].replace(" ", "").split(",")
+        radius = request.POST["radius"]
+        try:
+            latlng = [float(x) for x in latlng_str]
+            radius = float(radius)
+            events = radius_filter(events, latlng, radius)
+        except ValueError:
+            print("Error: Radius or coordinates value error.")
+
         return display(events=events, form=filter_form)
 
     # Display page

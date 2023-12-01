@@ -75,6 +75,7 @@ Celebrations page
 
 Make logo of running man go backwards and forwards
 
+Make it so that users are always attending their own events
 Make sure users can't make events backwards in time (or within say 30 minutes)
 Split users events into finished/active
 Paginate events

@@ -94,6 +94,10 @@ select {
     }
 }
 
+.hidden {
+    display: none;
+}
+
 .my-navbar a {
     float: left;
     display: flex;
@@ -311,6 +315,11 @@ form {
 
 .flex-row {
     display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
 }
 
 #key {

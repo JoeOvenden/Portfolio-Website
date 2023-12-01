@@ -37,9 +37,17 @@
                     <ul>{{ field_name }}: {{ error }}</ul>
                 {% endfor %}
                 <div id="map"></div>
-                <div>
-                    Search radius (km):
-                    <input id="radius-input" type="number" start="0" end="1000" step="0.1" value="2">
+                <div id="info-from-map">
+                    <table>
+                        <tr>
+                            <td>Search radius (km):</td>
+                            <td><input id="radius-input" name="radius" type="number" start="0" end="1000" step="0.1" value="2"></td>
+                        </tr>
+                        <tr>
+                            <td>Coordinates:</td>
+                            <td><input id="latlng" name="latlng"></input></td>
+                        </tr>
+                    </table>
                 </div>
                 <button>Submit</button>
             </form>

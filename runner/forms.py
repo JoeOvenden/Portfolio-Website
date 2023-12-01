@@ -32,7 +32,7 @@ class EventForm(forms.ModelForm):
 
 class EventFilterForm(forms.Form):
     today = date.today()
-    initial_end_date = today.replace(month=(today.month % 12) + 1)
+    initial_end_date = today.replace(year=today.year + 1)
     start_date = forms.DateField(widget=forms.SelectDateWidget, initial=today)
     end_date = forms.DateField(widget=forms.SelectDateWidget, initial=initial_end_date)
     min_distance = forms.DecimalField(required=False)
