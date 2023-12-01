@@ -56,7 +56,8 @@ textarea::placeholder, input::placeholder {
     color: white;
 }
 
-#routeMap, #startMap, #endMap {
+#routeMap, #startMap, #endMap, #map {
+    @extend %bordered;
     height: 300px;
     width: 600px;
 }
@@ -294,6 +295,14 @@ form {
     @extend %padded;
     @extend %bordered;
     display: flex;
+
+    p {
+        margin-bottom: 0.2rem;
+    }
+}
+
+#map-info {
+    margin-top: 4%;
 
     p {
         margin-bottom: 0.2rem;

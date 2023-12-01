@@ -1,4 +1,4 @@
-.event, #profile #profile-info #info #bio {
+.event, #profile #profile-info #info #bio, #routeMap, #startMap, #endMap, #map {
   border: 2px solid white;
 }
 
@@ -38,7 +38,7 @@ textarea::placeholder, input::placeholder {
   color: white;
 }
 
-#routeMap, #startMap, #endMap {
+#routeMap, #startMap, #endMap, #map {
   height: 300px;
   width: 600px;
 }
@@ -232,6 +232,13 @@ form {
   display: flex;
 }
 .event p {
+  margin-bottom: 0.2rem;
+}
+
+#map-info {
+  margin-top: 4%;
+}
+#map-info p {
   margin-bottom: 0.2rem;
 }
 

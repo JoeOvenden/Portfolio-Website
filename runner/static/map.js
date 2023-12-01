@@ -7,3 +7,20 @@ export function createMap(mapId, coordinates=[51, 0]) {
     }).addTo(map);
     return map;
 }
+
+// Returns icons
+export function getIcons(sizeOfIcon=48) {
+    let icons = {
+        "start": L.icon({
+            iconUrl: '../../media/icons/pin-icon-start.png',
+            iconSize: [sizeOfIcon, sizeOfIcon],
+            iconAnchor: [sizeOfIcon / 2, sizeOfIcon],
+        }),
+        "end": L.icon({
+            iconUrl: '../../media/icons/pin-icon-end.png',
+            iconSize: [sizeOfIcon, sizeOfIcon],
+            iconAnchor: [sizeOfIcon / 2, sizeOfIcon], 
+        })
+    };
+    return icons;
+}

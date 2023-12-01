@@ -1,4 +1,2 @@
-- Added filters for event searching
-- Maps on create event now initially show the user's location (if they allow it), however
-   the coordinates shown initially in the input boxes are not right. This needs to be fixed.
-- Slightly changed the way events are displayed
+- Added event_attendence model
+- Added map to event search page filtering, although the filtering itself by location is yet to be added

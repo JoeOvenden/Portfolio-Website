@@ -188,6 +188,38 @@ def follow(request):
         return JsonResponse({'change': change})
 
         
+@csrf_exempt
+@login_required
+def attend(request):
+    if request.method == "PUT":
+        data = json.loads(request.body)
+        event_id = data.get("event_id")
+
+        # Make sure the user to be attended exists
+        if Event.objects.filter(id=event_id).exists() is False:
+            return HttpResponse(400)    # Bad request
+        
+        # Make sure user is not trying to attend/unattend their own event
+        event = Event.objects.get(id=event_id)
+        user = User.objects.get(username=request.user)
+        if event.organiser == request.user:
+            return HttpResponse(400)    # Bad request
+        
+        # If attendence already exists then delete it
+        try:
+            attending = event.attendence.get(user=user)
+            attending.delete()
+            change = -1
+
+        # Otherwise create the following
+        except event_attendence.DoesNotExist:
+            attending = event_attendence(user=request.user, event=event)
+            attending.save()
+            change = 1
+
+        # Change the number of people attending the event
+        return JsonResponse({'change': change})
+
 
 @login_required(login_url='/login')
 def following_page(request):

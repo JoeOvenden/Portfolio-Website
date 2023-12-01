@@ -10,9 +10,26 @@ let markers = {
 
 var initialCoordinates = [51.505, -0.09];
 
+function updateInputCoordinates() {
+    ["start", "end"].forEach(mapType => {
+        ["Latitude", "Longitude"].forEach(latOrLng => {
+    
+            // Get coordinate input element and add event listener
+            let coordinateInput = document.querySelector(`#${mapType}${latOrLng}`);
+            if (latOrLng == "Latitude") {
+                coordinateInput.value = initialCoordinates[0];
+            }
+            else {
+                coordinateInput.value = initialCoordinates[1];
+            }
+        })
+    })
+}
+
 function initialiseMaps(position) {
-    initialCoordinates = [position.coords.latitude, position.coords.longitude];
+    initialCoordinates = [position.coords.latitude.toFixed(5), position.coords.longitude.toFixed(5)];
     createMaps(initialCoordinates);
+    updateInputCoordinates();
 }
 
 getLocation(initialiseMaps);

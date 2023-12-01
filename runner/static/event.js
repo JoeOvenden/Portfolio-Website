@@ -1,32 +1,29 @@
 import { createMap } from './map.js';
 
-let maps = {};
+let map = undefined;
 let markers = {};
+const sizeOfIcon = 48;
+let icons = {
+    "start": L.icon({
+        iconUrl: '../../media/icons/pin-icon-start.png',
+        iconSize: [sizeOfIcon, sizeOfIcon],
+        iconAnchor: [sizeOfIcon / 2, sizeOfIcon],
+    }),
+    "end": L.icon({
+        iconUrl: '../../media/icons/pin-icon-end.png',
+        iconSize: [sizeOfIcon, sizeOfIcon],
+        iconAnchor: [sizeOfIcon / 2, sizeOfIcon], 
+    })
+};
 
-// Moves map marker
-function moveMapMarker(mapType, latlng) {
-    markers[mapType].setLatLng(latlng);
-    maps[mapType].setView(latlng);
-}
-
-// Moves map marker and changes the values in the lat and lng input elements
-function setMapMarker(latlng, mapType) {
-    moveMapMarker(mapType, latlng);
-    document.querySelector(`#${mapType}Latitude`).value = latlng["lat"].toFixed(5);
-    document.querySelector(`#${mapType}Longitude`).value = latlng["lng"].toFixed(5);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-
+function initMap() {
     let displayType = document.querySelector("#displayType").innerHTML;
+    map = createMap("map");
 
     if (displayType == "route") {
-        // Create route map
-        maps["route"] = createMap("routeMap");
 
         // Get the gpx file
         let gpxFile = document.querySelector("#gpxFileLoc").innerHTML;
-        console.log(gpxFile);
         new L.GPX(gpxFile, {
             async: true,
             marker_options: {
@@ -35,20 +32,63 @@ document.addEventListener("DOMContentLoaded", () => {
                 shadowUrl: null
             }
         }).on('loaded', function(e) {
-            console.log("LOADED");
-            maps["route"].fitBounds(e.target.getBounds());
-        }).addTo(maps["route"]);
+            map.fitBounds(e.target.getBounds());
+        }).addTo(map);
     }
 
     else if (displayType == "startEnd") {
         // Add start and end point maps
-        ["start", "end"].forEach(mapType => {
+        ["start", "end"].forEach(markerType => {
             let markerCoordinates = [
-                document.querySelector(`#${mapType}Latitude`).innerHTML,
-                document.querySelector(`#${mapType}Longitude`).innerHTML
+                document.querySelector(`#${markerType}Latitude`).innerHTML,
+                document.querySelector(`#${markerType}Longitude`).innerHTML
             ]
-            maps[mapType] = createMap(`${mapType}Map`, markerCoordinates);
-            markers[mapType] = L.marker(markerCoordinates).addTo(maps[mapType]);
+            markers[markerType] = L.marker(markerCoordinates, { icon : icons[markerType] }).addTo(map);
         });
+
+        // Create a LatLngBounds object to encompass start and end points
+        // and then fit the map to the bounds
+        const bounds = L.latLngBounds(markers["start"]._latlng, markers["end"]._latlng);
+        map.fitBounds(bounds);
     }
+}
+
+function addAttendEventListener() {
+    let attend_text = document.querySelector("#attend");
+    if (attend_text == undefined) {
+        return;
+    }
+    attend_text.addEventListener("click", () => {
+        let event_id = document.querySelector("#event_id").innerHTML;
+
+        // Send a request to toggle following
+        fetch("/attend", {
+            method: 'PUT',
+            body: JSON.stringify({
+                event_id: event_id
+            })
+        }).then(response => response.json())
+            .then(data => {
+            let change = parseInt(data['change']);
+
+            // Update the attendence count displayed
+            let attendence = document.querySelector("#attendence");
+            attendence.innerHTML = parseInt(attendence.innerHTML) + change;
+
+            // If the user has just attended
+            if (change == 1) {
+                attend_text.innerHTML = "Unattend event";
+            }
+            // If the user has just unattended
+            else {
+                attend_text.innerHTML = "Attend event";
+            }
+            })
+            .catch(error => console.error("Error: ", error));
+    })
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    initMap();
+    addAttendEventListener();
 });

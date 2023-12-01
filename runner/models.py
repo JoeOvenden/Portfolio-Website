@@ -68,6 +68,12 @@ class Event(models.Model):
         if self.distance != 1:
             formatted_distance += "s"
         return formatted_distance
+    
+
+class event_attendence(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="attendence")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="events_attending")
+
 """
 FROM NETWORK
 

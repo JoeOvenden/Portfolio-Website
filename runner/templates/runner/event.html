@@ -11,12 +11,23 @@
 
     <div id="top-container">
         <div class="padded">
-            <div>
-                <h3>{{ event.title }}</h3>
-                <p>Description: {{ event.description }}</p>
-                <p>Date: {{ event.date }}</p>
-                <p>Time: {{ event.time }}</p>
+            <h3>{{ event.title }}</h3>
+            <p id="event_id" style="display: none;">{{ event.id }}</p>
+            <div class="row">
+                <div class="col-6">
+                    <p>Description: {{ event.description }}</p>
+                    <p>Date: {{ event.date }}</p>
+                    <p>Time: {{ event.time }}</p>
+                </div>
+                <div class="col-6">
+                    <p>People going: <span id="attendence">{{ event.going }}</span></p>
+                    {% if event.organiser != user %}
+                        <button id="attend" class="border-flip">{% if is_going %}Unattend event{% else %}Attend event{% endif %}</button>
+                    {% endif %}
+                </div>
             </div>
+
+
             <hr>
             <div>
                 <h5>Run details</h5>
@@ -24,46 +35,29 @@
                 <p>Duration: {{ event.formatted_duration }}
                 <p>Pace: {{ event.formatted_pace }}</p>    
             </div>
-            <div id="maps">
-                <table>
-                    {% if event.route %}
-                        <p style="display: none;" id="gpxFileLoc">{{ MEDIA_URL }}{{ event.route }}</p>
-                        <p id="displayType" style="display: none;">route</p>
-                        <tr>
-                            <th>Route:</th>
-                            <td>
-                                <div id=routeMap></div>
-                                <div id="key" class="flex-row">
-                                    <div id="iconContainer">
-                                        <img src="{{ MEDIA_URL }}icons/pin-icon-start.png">
-                                    </div>
-                                    <h5> = START </h5>
-                                    &nbsp;
-                                    <div id="iconContainer">
-                                        <img src="{{ MEDIA_URL }}icons/pin-icon-end.png">
-                                    </div>
-                                    <h5> = FINISH </h5>
-                                </div>
-                            </td>
-                        </tr>
-                    {% else %}
+            <div id="map-info">
+                {% if event.route %}
+                    <p style="display: none;" id="gpxFileLoc">{{ MEDIA_URL }}{{ event.route }}</p>
+                    <p id="displayType" style="display: none;">route</p>
+                    <h5>Route:</h5>
+                {% else %}
                     <p id="displayType" style="display: none;">startEnd</p>
-                        <tr>
-                            <th>Start point:</th>
-                            <td>
-                                <div id=startMap></div>
-                                <p>Coordinates: <span id="startLatitude">{{ event.start_point_lat }}</span>, <span id="startLongitude">{{ event.start_point_lng }}</span></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>End point:</th>
-                            <td>
-                                <div id=endMap></div>
-                                <p>Coordinates: <span id="endLatitude">{{ event.end_point_lat }}</span>, <span id="endLongitude">{{ event.end_point_lng }}</span></p>
-                            </td>
-                        </tr>
-                    {% endif %}
-                </table>
+                    <h5>Start and end points:</h5>
+                {% endif %}
+                <div id="map"></div>
+                <p>Start Coordinates: <span id="startLatitude">{{ event.start_point_lat }}</span>, <span id="startLongitude">{{ event.start_point_lng }}</span></p>
+                <p>End Coordinates: <span id="endLatitude">{{ event.end_point_lat }}</span>, <span id="endLongitude">{{ event.end_point_lng }}</span></p>
+                <div id="key" class="flex-row">
+                    <div id="iconContainer">
+                        <img src="{{ MEDIA_URL }}icons/pin-icon-start.png">
+                    </div>
+                    <h5> = START </h5>
+                    &nbsp;
+                    <div id="iconContainer">
+                        <img src="{{ MEDIA_URL }}icons/pin-icon-end.png">
+                    </div>
+                    <h5> = FINISH </h5>
+                </div>
             </div>
         </div>
     </div>
