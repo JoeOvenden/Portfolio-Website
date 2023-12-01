@@ -12,18 +12,23 @@
     <div id="top-container">
         <div class="padded">
             <h3>{{ event.title }}</h3>
-            <p id="event_id" style="display: none;">{{ event.id }}</p>
+            <p id="event_id" class="hidden">{{ event.id }}</p>
             <div class="row">
                 <div class="col-6">
                     <p>Description: {{ event.description }}</p>
                     <p>Date: {{ event.date }}</p>
                     <p>Time: {{ event.time }}</p>
+                    <p>Organiser: <a href="{% url 'profile' event.organiser %}">{{ event.organiser }}</a></p>
                 </div>
                 <div class="col-6">
-                    <p>People going: <span id="attendence">{{ event.going }}</span></p>
-                    {% if event.organiser != user %}
-                        <button id="attend" class="border-flip">{% if is_going %}Unattend event{% else %}Attend event{% endif %}</button>
-                    {% endif %}
+                    <p>People going:
+                        <ul>
+                            {% for person in attending %}
+                                <li><a href="{% url 'profile' person %}">{{ person }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+                    <button id="attend" class="border-flip">{% if is_going %}Unattend event{% else %}Attend event{% endif %}</button>
                 </div>
             </div>
 

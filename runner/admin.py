@@ -10,7 +10,11 @@ class FollowAdmin(admin.ModelAdmin):
 class EventAdmin(admin.ModelAdmin):
     list_display = ("organiser", "date", "time", "description")
 
+class EventAttendenceAdmin(admin.ModelAdmin):
+    list_display = ("event", "user")
+
 # Register your models here.
 admin.site.register(User, UserAdmin)
 admin.site.register(Follow, FollowAdmin)
 admin.site.register(Event, EventAdmin)
+admin.site.register(Event_Attendence, EventAttendenceAdmin)

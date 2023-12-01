@@ -70,7 +70,7 @@ class Event(models.Model):
         return formatted_distance
     
 
-class event_attendence(models.Model):
+class Event_Attendence(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="attendence")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="events_attending")
 

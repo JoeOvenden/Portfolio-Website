@@ -2,7 +2,8 @@ import { createMap, getIcons } from './map.js';
 import { getLocation } from './geolocation.js';
 
 let map = undefined;
-let marker = undefined;
+let centreMarker = undefined;
+let markers = {};
 let circle = undefined;
 let coordinateInput = undefined;    // Hidden HTML coordinate input element
 const initialCoordinates = [51, 0];
@@ -18,10 +19,27 @@ function initPosition(position) {       // Set map location to device location
 
 function changePosition(latlng) {
     // Change position of marker and circle and update hidden html coordinate input element
-    marker.setLatLng(latlng);
+    centreMarker.setLatLng(latlng);
     circle.setLatLng(latlng);
-    console.log(latlng);
     coordinateInput.value = latlng["lat"].toFixed(5) + "," + latlng["lng"].toFixed(5);
+}
+
+function addEventMarkers() {
+    // Add marker to map for every event on the page
+
+    // Get an array containing all <p> elements for the event latlngs
+    let coordinateElements = Array.from(document.querySelectorAll('[id^="event-latlng"]'));
+
+    for(let coordinateElement of coordinateElements) {
+        let latlng = coordinateElement.innerHTML.split(",");
+        let marker = L.marker(latlng).addTo(map);
+        let id = coordinateElement.id.split("-")[2];
+        let parent = coordinateElement.parentElement;
+        let distance = parent.querySelector("#distance").innerHTML;
+        let title = parent.querySelector("#title").innerHTML;
+        marker.bindPopup(`<a href="event/${id}"><p>Event: ${title}</p></a><p>Distance: ${distance}</p>`);
+        markers[id] = marker;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -44,10 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     map.on('click', e => {              // When the map is clicked
         changePosition(e.latlng);
-        map.setView(marker._latlng);    // Change the view to centre on this point
+        map.setView(centreMarker._latlng);    // Change the view to centre on this point
     });
 
-    marker = L.marker(initialCoordinates).addTo(map);
+    centreMarker = L.marker(initialCoordinates).addTo(map);
     let radiusInputElement = document.querySelector("#radius-input");
 
     circle = L.circle(initialCoordinates, {
@@ -66,4 +84,5 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     getLocation(initPosition);          // Set location to device location
+    addEventMarkers();
 });

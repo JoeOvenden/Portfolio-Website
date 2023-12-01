@@ -60,7 +60,6 @@ function addAttendEventListener() {
     }
     attend_text.addEventListener("click", () => {
         let event_id = document.querySelector("#event_id").innerHTML;
-
         // Send a request to toggle following
         fetch("/attend", {
             method: 'PUT',
@@ -72,8 +71,8 @@ function addAttendEventListener() {
             let change = parseInt(data['change']);
 
             // Update the attendence count displayed
-            let attendence = document.querySelector("#attendence");
-            attendence.innerHTML = parseInt(attendence.innerHTML) + change;
+            // let attendence = document.querySelector("#attendence");
+            // attendence.innerHTML = parseInt(attendence.innerHTML) + change;
 
             // If the user has just attended
             if (change == 1) {

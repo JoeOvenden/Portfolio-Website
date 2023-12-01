@@ -1,2 +1,2 @@
-- Added event_attendence model
-- Added map to event search page filtering, although the filtering itself by location is yet to be added
+- When a user creates an event they are now automatically signed up as attending.
+- Event markers now show up on the map on the event filtering page. Clicking on them shows a popup with the title (which is a link to the event) and the distance.

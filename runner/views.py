@@ -200,11 +200,12 @@ def attend(request):
         if Event.objects.filter(id=event_id).exists() is False:
             return HttpResponse(400)    # Bad request
         
-        # Make sure user is not trying to attend/unattend their own event
         event = Event.objects.get(id=event_id)
         user = User.objects.get(username=request.user)
-        if event.organiser == request.user:
-            return HttpResponse(400)    # Bad request
+
+        # # Make sure user is not trying to attend/unattend their own event
+        # if event.organiser == request.user:
+        #     return HttpResponse(400)    # Bad request
         
         # If attendence already exists then delete it
         try:
@@ -213,10 +214,12 @@ def attend(request):
             change = -1
 
         # Otherwise create the following
-        except event_attendence.DoesNotExist:
-            attending = event_attendence(user=request.user, event=event)
+        except Event_Attendence.DoesNotExist:
+            attending = Event_Attendence(user=request.user, event=event)
             attending.save()
             change = 1
+
+        print(change)
 
         # Change the number of people attending the event
         return JsonResponse({'change': change})
@@ -297,6 +300,12 @@ def create_event(request):
 
         event.save()
 
+        # Create event attendence for organiser, since the organiser should really attend!
+        attendence = Event_Attendence()
+        attendence.event = event
+        attendence.user = request.user
+        attendence.save()
+
         # Redirect user to the new event page
         return redirect(f'event/{event.id}')
 
@@ -313,9 +322,13 @@ def event_page(request, event_id):
     except Event.DoesNotExist:
         return redirect('404')
     
+    users_attending = [attending.user.username for attending in event.attendence.all()]
     return render(request, "runner/event.html", {
-        "event": event
+        "event": event,
+        "attending": users_attending,
+        "is_going": request.user.username in users_attending
     })
+
 
 
 def page_not_found(request):
@@ -362,7 +375,7 @@ def radius_filter(events, latlng, radius):
     return events
 
 def events_search(request):
-    def display(events=get_events(), form=EventFilterForm()):
+    def display(events=None, form=EventFilterForm()):
         return render(request, "runner/events_search.html", {
             "form": form,
             "events": events
