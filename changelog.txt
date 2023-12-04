@@ -1,0 +1,1 @@
+- Filtering events by coordinates with radius now works.
