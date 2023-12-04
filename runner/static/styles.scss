@@ -322,6 +322,13 @@ form {
     flex-direction: column;
 }
 
+.marker-popup {
+    p {
+        margin-bottom: 0.2rem !important;
+        margin: 0 !important;
+    }
+}
+
 .leaflet-popup-content {
     p {
         color: black;

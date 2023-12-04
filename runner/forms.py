@@ -37,6 +37,8 @@ class EventFilterForm(forms.Form):
     end_date = forms.DateField(widget=forms.SelectDateWidget, initial=initial_end_date)
     min_distance = forms.DecimalField(required=False)
     max_distance = forms.DecimalField(required=False)
+    search_radius = forms.DecimalField(required=False, initial=2)
+    coordinates = forms.CharField()
 
     def clean_min_distance(self):
         data = self.cleaned_data['min_distance']
@@ -64,3 +66,18 @@ class EventFilterForm(forms.Form):
         if data is not None and data < date.today():
             raise forms.ValidationError("End date must be from today onwards.")
         return data 
+    
+    def clean_coordinates(self):
+        data = self.cleaned_data['coordinates']
+        # Check that coordinates are in the format lat,lng
+        data = data.split(",")
+        print(data)
+        if len(data) != 2:
+            raise forms.ValidationError("Coordinates must be in the form: lat,lng")
+        else:
+            try:
+                x = float(data[0])
+                x = float(data[1])
+            except ValueError:
+                raise forms.ValidationError("Coordinates must be in the form: lat,lng")
+        return data

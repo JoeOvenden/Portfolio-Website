@@ -398,12 +398,13 @@ def events_search(request):
         events = get_events(start_date=start_date, end_date=end_date, min_distance=min_distance, 
                             max_distance=max_distance, title_filter=title_filter)
         
-        latlng_str = request.POST["latlng"].replace(" ", "").split(",")
-        radius = request.POST["radius"]
+        latlng_str = filter_form.cleaned_data["coordinates"]
+        print(latlng_str)
+        search_radius = filter_form.cleaned_data["search_radius"]
         try:
             latlng = [float(x) for x in latlng_str]
-            radius = float(radius)
-            events = radius_filter(events, latlng, radius)
+            search_radius = float(search_radius)
+            events = radius_filter(events, latlng, search_radius)
         except ValueError:
             print("Error: Radius or coordinates value error.")
 
