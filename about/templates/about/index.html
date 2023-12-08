@@ -4,13 +4,24 @@
 
 {% block body %}
 
+    {% load static %}
+
     <div id="top-container">
-        <div class="row">
-            <div class="col-5">
+        <div id="title">
+            <h3>Joe Ovenden - Portfolio</h3>
+        </div>
+        <div id="project-cards" class="row">
+            <div class="col-5 project-card">
                 <h5><a href="/runner">Runner</a></h5>
+                <div id="img-container">
+                    <img src="{% static 'about/images/runner-website.png' %}">
+                </div>
             </div>
-            <div class="col-5">
+            <div class="col-5 project-card">
                 <h5><a href="/physics">Physics</a></h5>
+                <div id="img-container">
+                    <img src="{% static 'about/images/physics-website.png' %}">
+                </div>
             </div>
         </div>
     </div>

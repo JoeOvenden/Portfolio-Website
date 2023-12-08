@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-tegy1o7gms05%b^3!qc9yi3u2%9mo+6jp$_(g=m5_t(nw!3&um
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'runner',
     'physics',
+    'asteroids',
     'about',
     'django.contrib.admin',
     'django.contrib.auth',
