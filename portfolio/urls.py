@@ -24,6 +24,7 @@ urlpatterns = [
     path("", include("about.urls")),
     path("runner/", include("runner.urls")),
     path("physics/", include("physics.urls")),
+    path("asteroids/", include("asteroids.urls")),
 ]
 
 if settings.DEBUG:
