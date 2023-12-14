@@ -6,4 +6,4 @@
 	url = https://github.com/JoeOvenden/Runner
 [submodule "asteroids"]
 	path = asteroids
-	url = https://github.com/JoeOvenden/Asteroids.git
+	url = https://github.com/JoeOvenden/Asteroids
