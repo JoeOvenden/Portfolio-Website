@@ -1,9 +1,12 @@
 [submodule "physics"]
     path = physics
     url = https://github.com/JoeOvenden/Interactive-Educational-Physics-Website
+	branch = main
 [submodule "runner"]
 	path = runner
 	url = https://github.com/JoeOvenden/Runner
+	branch = main
 [submodule "asteroids"]
 	path = asteroids
 	url = https://github.com/JoeOvenden/Asteroids
+	branch = main
