@@ -1,5 +1,0 @@
-Events
-	- Sort by soonest
-	- Sort by date, date range
-	- Sort by distance
-	- Sort by duration
