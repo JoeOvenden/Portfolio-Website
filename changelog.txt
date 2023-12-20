@@ -1,3 +1,0 @@
-Changed styling on event cards:
-    - Changed paragraphs into a table  
-    - Changed background to a gradient

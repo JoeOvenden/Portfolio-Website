@@ -1,29 +1,8 @@
-Social running (and potentially walking/cycling) planning platform	
-	- Users create an account and can then create running events with the following information:
-		- Starting point
-		- Route
-		- Distance
-		- Date and time
-		- Public/private
-	- Other people can then click going
-	- Alternative to a running club that can be a bit more flexible
-	- I would start by aiming this just towards my home town
-	- Could be extended for walking/cycling
-	- Should handle gpx files
-	- Connect to strava somehow?
-
-
-User
-	- Firstname, surname (optional)
-	- Profile picture (optional) 
-	- Bio (optional)
-	- Whatsapp (optional)
-	- Date of account creation
-
-	
-	Links:
-	- Activities
-	- Statistics
+Add followers page where you can look at followers
+Add following page where you can look at following
+Allow user messaging
+Allow comments on events
+Statistics page
 
 Badges
 
@@ -75,7 +54,6 @@ Celebrations page
 
 Make logo of running man go backwards and forwards
 
-Make it so that users are always attending their own events
 Make sure users can't make events backwards in time (or within say 30 minutes)
 Split users events into finished/active
 Paginate events
@@ -83,6 +61,4 @@ Paginate users
 Filter events by proximity
 
 ---------------BUGS------------------------
-- Not all images take up the same space. Some images are smaller
-- When you reduce the width of the screen on the profile page, the profile picture is no longer a circle
 - Profile bio doesn't keep line breaks
