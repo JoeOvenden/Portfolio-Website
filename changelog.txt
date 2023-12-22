@@ -1,0 +1,2 @@
+Users can now comment on events
+    - Still to do: allow users to edit or delete their own comments.

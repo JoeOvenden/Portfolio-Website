@@ -1,8 +1,10 @@
-Add followers page where you can look at followers
-Add following page where you can look at following
 Allow user messaging
 Allow comments on events
 Statistics page
+
+---fix---
+	the colour on edit avatar should be set to the colour of the users avatar on loading
+		( in the colour picker/input )
 
 Badges
 
