@@ -1,0 +1,24 @@
+Script started on Fri Mar  1 15:00:55 2024
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hggir re   t remote show r
+[Jrequirements.txt  runner/[A[0m[27m[24m[62Cgit remote show r[Kunner[1m/[0m[0m [?2004l
+[J* remote runner
+  Fetch URL: runner
+  Push  URL: runner
+  HEAD branch: (unknown)
+  Local ref configured for 'git push':
+    main pushes to main (local out of date)
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hggit remote show asteroids[1m/[0m[0m [?2004l
+* remote asteroids
+  Fetch URL: asteroids
+  Push  URL: asteroids
+  HEAD branch: main
+  Local ref configured for 'git push':
+    main pushes to main (local out of date)
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hggit remote show physics[1m/[0m[0m [?2004l
+* remote physics
+  Fetch URL: physics
+  Push  URL: physics
+  HEAD branch: main
+  Local ref configured for 'git push':
+    main pushes to main (local out of date)
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hggit remot e

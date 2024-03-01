@@ -1,0 +1,40 @@
+Script started on Fri Mar  1 13:51:49 2024
+[1m[7m%[27m[1m[0m                                                                                                                                                            [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hppython3 m
+[Jmanage.py  media/[A[0m[27m[24m[62Cpython3 m[Kanage.py[1m [0m[0m runserver[?2004l
+[JTraceback (most recent call last):
+  File "/Users/wararatklaisook/Desktop/Joe's Stuff/joes-portfolio/Portfolio-Website/manage.py", line 10, in main
+    from django.core.management import execute_from_command_line
+ModuleNotFoundError: No module named 'django'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/wararatklaisook/Desktop/Joe's Stuff/joes-portfolio/Portfolio-Website/manage.py", line 21, in <module>
+    main()
+  File "/Users/wararatklaisook/Desktop/Joe's Stuff/joes-portfolio/Portfolio-Website/manage.py", line 12, in main
+    raise ImportError(
+ImportError: Couldn't import Django. Are you sure it's installed and available on your PYTHONPATH environment variable? Did you forget to activate a virtual environment?
+[1m[7m%[27m[1m[0m                                                                                                                                                            [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hppip3 install django[?2004l
+[1;31merror[0m: [1mexternally-managed-environment[0m
+
+[31m×[0m This environment is externally managed
+[31m╰─>[0m To install Python packages system-wide, try brew install
+[31m   [0m xyz, where xyz is the package you are trying to
+[31m   [0m install.
+[31m   [0m 
+[31m   [0m If you wish to install a non-brew-packaged Python package,
+[31m   [0m create a virtual environment using python3 -m venv path/to/venv.
+[31m   [0m Then use path/to/venv/bin/python and path/to/venv/bin/pip.
+[31m   [0m 
+[31m   [0m If you wish to install a non-brew packaged Python application,
+[31m   [0m it may be easiest to use pipx install xyz, which will manage a
+[31m   [0m virtual environment for you. Make sure you have pipx installed.
+
+[1;35mnote[0m: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+[1;36mhint[0m: See PEP 668 for the detailed specification.
+[1m[7m%[27m[1m[0m                                                                                                                                                            [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hb ppipx int stall django[?2004l
+[?25l'django' already seems to be installed. Not modifying existing installation in '/Users/wararatklaisook/Library/Application Support/pipx/venvs/django'.
+Pass '--force' to force installation.
+[?25h[1m[7m%[27m[1m[0m                                                                                                                                                            [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004heexit[?2004l
+
+Script done on Fri Mar  1 13:52:28 2024
