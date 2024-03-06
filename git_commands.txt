@@ -311,4 +311,136 @@ Your branch is up to date with 'origin/main'.
 
 nothing to commit, working tree clean
 [1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat runner % [K[?2004hccd ..[?2004l
-[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hg ggit 
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hg ggit  g  ggit comm    add .[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hggit commit -m "small changes"[?2004l
+[main 5b0b51b] small changes
+ Committer: Wararat Klaisook <wararatklaisook@MacBook-Air-khxng-Wararat.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 4 files changed, 292 insertions(+), 2 deletions(-)
+ create mode 100644 media/images/map.png
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hggit add    g  ggit push[?2004l
+Enumerating objects: 11, done.
+Counting objects:   9% (1/11)Counting objects:  18% (2/11)Counting objects:  27% (3/11)Counting objects:  36% (4/11)Counting objects:  45% (5/11)Counting objects:  54% (6/11)Counting objects:  63% (7/11)Counting objects:  72% (8/11)Counting objects:  81% (9/11)Counting objects:  90% (10/11)Counting objects: 100% (11/11)Counting objects: 100% (11/11), done.
+Delta compression using up to 8 threads
+Compressing objects:  16% (1/6)Compressing objects:  33% (2/6)Compressing objects:  50% (3/6)Compressing objects:  66% (4/6)Compressing objects:  83% (5/6)Compressing objects: 100% (6/6)Compressing objects: 100% (6/6), done.
+Writing objects:  14% (1/7)Writing objects:  28% (2/7)Writing objects:  42% (3/7)Writing objects:  57% (4/7)Writing objects:  71% (5/7)Writing objects:  85% (6/7)Writing objects: 100% (7/7)Writing objects: 100% (7/7), 640.70 KiB | 29.12 MiB/s, done.
+Total 7 (delta 3), reused 0 (delta 0), pack-reused 0
+c remote: Resolving deltas:   0% (0/3)[Kremote: Resolving deltas:  33% (1/3)[Kremote: Resolving deltas:  66% (2/3)[Kremote: Resolving deltas: 100% (3/3)[Kremote: Resolving deltas: 100% (3/3), completed with 3 local objects.[K
+To https://github.com/JoeOvenden/Portfolio-Website.git
+   57c7796..5b0b51b  main -> main
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hccd runner[1m/[0m[0m [?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat runner % [K[?2004hggit add .[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat runner % [K[?2004hggit om  commit m m 0m   -m @ "Small     smll   all changes"[?2004l
+[main 2edd1cd] small changes
+ Committer: Wararat Klaisook <wararatklaisook@MacBook-Air-khxng-Wararat.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ delete mode 100644 static/runner/images/map.png
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat runner % [K[?2004hggit push[?2004l
+Enumerating objects: 13, done.
+Counting objects:   7% (1/13)Counting objects:  15% (2/13)Counting objects:  23% (3/13)Counting objects:  30% (4/13)Counting objects:  38% (5/13)Counting objects:  46% (6/13)Counting objects:  53% (7/13)Counting objects:  61% (8/13)Counting objects:  69% (9/13)Counting objects:  76% (10/13)Counting objects:  84% (11/13)Counting objects:  92% (12/13)Counting objects: 100% (13/13)Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects:  20% (1/5)Compressing objects:  40% (2/5)Compressing objects:  60% (3/5)Compressing objects:  80% (4/5)Compressing objects: 100% (5/5)Compressing objects: 100% (5/5), done.
+Writing objects:  14% (1/7)Writing objects:  28% (2/7)Writing objects:  42% (3/7)Writing objects:  57% (4/7)Writing objects:  71% (5/7)Writing objects:  85% (6/7)Writing objects: 100% (7/7)Writing objects: 100% (7/7), 603 bytes | 603.00 KiB/s, done.
+Total 7 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/3)[Kremote: Resolving deltas:  33% (1/3)[Kremote: Resolving deltas:  66% (2/3)[Kremote: Resolving deltas: 100% (3/3)[Kremote: Resolving deltas: 100% (3/3), completed with 3 local objects.[K
+To https://github.com/JoeOvenden/Runner
+   a1839c7..2edd1cd  main -> main
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat runner % [K[?2004hcclear[?2004l
+[H[2J[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat runner % [K[?2004hggit status[?2004l
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   __pycache__/views.cpython-312.pyc[m
+	[31mmodified:   views.py[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat runner % [K[?2004hccd ..[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat Portfolio-Website % [K[?2004hccd portfolio[1m/[0m[0m [?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat portfolio % [K[?2004hggit status[?2004l
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+	[31mmodified:   ../asteroids[m (untracked content)
+	[31mmodified:   ../git_commands.txt[m
+	[31mmodified:   ../physics[m (untracked content)
+	[31mmodified:   __pycache__/settings.cpython-312.pyc[m
+	[31mmodified:   settings.py[m
+	[31mmodified:   ../runner[m (new commits, modified content)
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat portfolio % [K[?2004hggit add . settings.py[1m [0m[0m [?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat portfolio % [K[?2004hggit commit -m ' "ad  Added STATIC_ROOT"[?2004l
+[main 978347e] Added STATIC_ROOT
+ Committer: Wararat Klaisook <wararatklaisook@MacBook-Air-khxng-Wararat.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+[1m[7m%[27m[1m[0m                                                                                                                                           [0m[27m[24m[Jwararatklaisook@MacBook-Air-khxng-Wararat portfolio % [K[?2004hggit co onfig --global --edit[?2004l
+hint: Waiting for your editor to close the file... [?1049h[>4;2m[?1h=[?2004h[?1004h[1;32r[?12h[?12l[22;2t[22;1t[27m[29m[m[H[2J[?25l[32;1H"~/.gitconfig" 5L, 186B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H# This is Git's per-user configuration file.
+[user][2;7H[K[3;1H# Please adapt and uncomment the following lines:[3;50H[K[4;1H#[7Cname = Wararat Klaisook
+#[7Cemail = wararatklaisook@MacBook-Air-khxng-Wararat.local
+[94m~                                                                                                                                          [7;1H~                                                                                                                                          [8;1H~                                                                                                                                          [9;1H~                                                                                                                                          [10;1H~                                                                                                                                          [11;1H~                                                                                                                                          [12;1H~                                                                                                                                          [13;1H~                                                                                                                                          [14;1H~                                                                                                                                          [15;1H~                                                                                                                                          [16;1H~                                                                                                                                          [17;1H~                                                                                                                                          [18;1H~                                                                                                                                          [19;1H~                                                                                                                                          [20;1H~                                                                                                                                          [21;1H~                                                                                                                                          [22;1H~                                                                                                                                          [23;1H~                                                                                                                                          [24;1H~                                                                                                                                          [25;1H~                                                                                                                                          [26;1H~                                                                                                                                          [27;1H~                                                                                                                                          [28;1H~                                                                                                                                          [29;1H~                                                                                                                                          [30;1H~                                                                                                                                          [31;1H~                                                                                                                                          [1;1H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[27m[29m[m[H[2J[?25l[1;1H# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+#[7Cname = Wararat Klaisook
+#[7Cemail = wararatklaisook@MacBook-Air-khxng-Wararat.local
+[94m~                                                                                                                                          [7;1H~                                                                                                                                          [8;1H~                                                                                                                                          [9;1H~                                                                                                                                          [10;1H~                                                                                                                                          [11;1H~                                                                                                                                          [12;1H~                                                                                                                                          [13;1H~                                                                                                                                          [14;1H~                                                                                                                                          [15;1H~                                                                                                                                          [16;1H~                                                                                                                                          [17;1H~                                                                                                                                          [18;1H~                                                                                                                                          [19;1H~                                                                                                                                          [20;1H~                                                                                                                                          [21;1H~                                                                                                                                          [22;1H~                                                                                                                                          [23;1H~                                                                                                                                          [24;1H~                                                                                                                                          [25;1H~                                                                                                                                          [26;1H~                                                                                                                                          [27;1H~                                                                                                                                          [28;1H~                                                                                                                                          [29;1H~                                                                                                                                          [30;1H~                                                                                                                                          [31;1H~                                                                                                                                          [m[32;1H"~/.gitconfig" 5L, 186B[1;1H[?25h#
+[
+#[4;8H name = Wararat Klaisoo[3;49H[4;31H[?25l[17C#[7Cemail = wararatklaisook@MacBook-Air-khxng-Wararat.local
+[94m~                                                                                                                                          [4;32H[?25h[?25l[m[32;1H:! man 'Klaisook'[32;18H[K[32;18H[?1004l[?2004l[?1l>[?25h[>4;m[?1049l
+[No write since last change]
+No manual entry for Klaisook
+
+shell returned 1
+
+Press ENTER or type command to continue[?1049h[>4;2m[?1h=[?2004h[?1004h[27m[29m[m[H[2J[?25l[1;1H# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+#[7Cname = Wararat Klaisook #[7Cemail = wararatklaisook@MacBook-Air-khxng-Wararat.local
+[94m~                                                                                                                                          [6;1H~                                                                                                                                          [7;1H~                                                                                                                                          [8;1H~                                                                                                                                          [9;1H~                                                                                                                                          [10;1H~                                                                                                                                          [11;1H~                                                                                                                                          [12;1H~                                                                                                                                          [13;1H~                                                                                                                                          [14;1H~                                                                                                                                          [15;1H~                                                                                                                                          [16;1H~                                                                                                                                          [17;1H~                                                                                                                                          [18;1H~                                                                                                                                          [19;1H~                                                                                                                                          [20;1H~                                                                                                                                          [21;1H~                                                                                                                                          [22;1H~                                                                                                                                          [23;1H~                                                                                                                                          [24;1H~                                                                                                                                          [25;1H~                                                                                                                                          [26;1H~                                                                                                                                          [27;1H~                                                                                                                                          [28;1H~                                                                                                                                          [29;1H~                                                                                                                                          [30;1H~                                                                                                                                          [31;1H~                                                                                                                                          [4;28H[?25h[msook [7C email = wararatklaisook@MacBook-Air-khxng-Wararat.loca[?25l[1;31r[1;1H[3M[1;32r[29;1H[94m~                                                                                                                                          [30;1H~                                                                                                                                          [31;1H~                                                                                                                                          [1;1H[?25h[?25l[1;31r[m[1;1H[L[1;32r[1;1H# Please adapt and uncomment the following lines:[?25h[?25l[1;31r[1;1H[L[1;32r[1;1H[46m[[muser[46m][?25h[?25l[m[user]
+[?25h[?25l[1;1H[46m[[muser[46m][?25h[?25l[1;31r[m[1;1H[L[1;32r[1;1H# This is Git's per-user configuration file.
+[user][1;1H[?25h[?25l
+[46m[[muser[46m][?25h[?25l[m[user]
+[?25h
+[7C name = [?25l[32;1H[1m-- INSERT --[m[5;1H[K[5;1H[?25h[?25la[?25h[?25lf[?25h[?25la[?25h[?25lf[?25h[?25la[?25h[?25le[?25h[?25lk[?25h[?25lf[?25h[?25l[6;1H[K[6;1H[?25h[?25la[?25h[?25lf[?25h[?25lo[?25h[?25la[?25h[?25ld[?25h[?25lk[?25h[?25ll[?25h[?25la[?25h[?25l[6;8H[K[6;8H[?25h[?25l[6;7H[K[6;7H[?25h[?25l[6;6H[K[6;6H[?25h[?25l[6;5H[K[6;5H[?25h[?25l[6;4H[K[6;4H[?25h[?25l[6;3H[K[6;3H[?25h[?25l[6;2H[K[6;2H[?25h[?25l[6;1H[K[6;1H[?25h[?25l[94m~                                                                                                                                          [5;9H[?25h[?25l[m[5;8H[K[5;8H[?25h[?25l[5;7H[K[5;7H[?25h[?25l[5;6H[K[5;6H[?25h[?25l[5;5H[K[5;5H[?25h[?25l[5;4H[K[5;4H[?25h[?25l[5;3H[K[5;3H[?25h[?25l[5;2H[K[5;2H[?25h[?25l[5;1H[K[5;1H[?25h[?25ln[?25h[?25la[?25h[?25lm[?25h[?25le[?25h[?25l [?25h[?25l=[?25h[?25l [?25h[?25lJ[?25h[?25lo[?25h[?25le[?25h[?25l [?25h[?25lO[?25h[?25lv[?25h[?25le[?25h[?25ln[?25h[?25ld[?25h[?25le[?25h[?25ln[?25h[?25l[6;1H[K[6;1H[?25h[?25le[?25h[?25lm[?25h[?25la[?25h[?25li[?25h[?25ll[?25h[?25l [?25h[?25l=[?25h[?25l [?25h[?25lj[?25h[?25lo[?25h[?25le[?25h[?25l.[?25h[?25lo[?25h[?25lv[?25h[?25le[?25h[?25ln[?25h[?25ld[?25h[?25le[?25h[?25ln[?25h[?25l1[?25h[?25l8[?25h[?25l"[?25h[?25l[6;22H[K[6;22H[?25h[?25l[6;21H[K[6;21H[?25h[?25l8[?25h[?25l[6;21H[K[6;21H[?25h[?25l7[?25h[?25l@[?25h[?25lg[?25h[?25lm[?25h[?25la[?25h[?25li[?25h[?25ll[?25h[?25l.[?25h[?25lc[?25h[?25lo[?25h[?25lm[?25h[?25l[7;1H[K[7;1H[?25h[?25l[8;1H[K[8;1H[?25h[?25l[9;1H[K[9;1H[?25h[?25l[10;1H[K[10;1H[?25h[?25l[11;1H[K[11;1H[?25h[?25l[12;1H[K[12;1H[?25h[?25l[13;1H[K[13;1H[?25h[?25l[14;1H[K[14;1H[?25h[?25l[15;1H[K[15;1H[?25h[?25l[16;1H[K[16;1H[?25h[?25l[17;1H[K[17;1H[?25h[?25l[18;1H[K[18;1H[?25h[?25l[19;1H[K[19;1H[?25h[?25l[20;1H[K[20;1H[?25h[?25l[21;1H[K[21;1H[?25h[?25l[22;1H[K[22;1H[?25h[?25l[23;1H[K[23;1H[?25h[?25l[24;1H[K[24;1H[?25h[?25l[25;1H[K[25;1H[?25h[?25l[26;1H[K[26;1H[?25h[?25l[27;1H[K[27;1H[?25h[?25l[28;1H[K[28;1H[?25h[?25l[29;1H[K[29;1H[?25h[?25l[30;1H[K[30;1H[?25h[?25l[31;1H[K[31;1H[?25h[?25l[1;31r[31;1H
+[1;32r[31;1H[?25h
