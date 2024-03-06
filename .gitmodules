@@ -10,3 +10,7 @@
 	path = asteroids
 	url = https://github.com/JoeOvenden/Asteroids
 	branch = main
+[submodule "vocabulary"]
+	path = vocabulary
+	url = https://github.com/JoeOvenden/Vocabulary-Practice
+	branch = main
