@@ -1,0 +1,22 @@
+{% load static %}
+
+
+
+<div id="project-cards">
+
+    {% for card in project_cards %}
+
+        <div id={{ card.id }} class="project-card" style="display: none;">
+            <h5><a href="{{ card.url }}">{{ card.title }}</a></h5>
+            <div class="flex-row">
+                <div id="img-container">
+                    <img src="{% static card.image_link %}">
+                </div>
+                <div>
+                    <p id="description">{{ card.description }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>

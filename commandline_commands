@@ -1,0 +1,2 @@
+node_modules/.bin/sass --watch about/static/about/styles.scss:about/static/about/styles.css
+^ From dir Portfolio-Website
