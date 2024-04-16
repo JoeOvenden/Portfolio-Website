@@ -9,12 +9,16 @@
             <h3>Joe Ovenden - Portfolio</h3>
         </div>
 
+        <div id="buttonDiv">
+            <button id="leftButton">Previous</button>
+            <button id="rightButton">Next</button>
+        </div>
+
         {% include 'about/project-cards.html' with project_cards=project_cards %}
+
 
     </div>
 
-    <button id="leftButton">Left</button>
-    <button id="rightButton">Right</button>
 
     {% load static %}
     <script src="{% static 'about/scripts/homepage.js' %}"></script>

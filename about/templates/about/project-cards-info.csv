@@ -1,4 +1,18 @@
 title,id,image_link,url,description
-Runner,0,about/images/runner-website.png,/runner,An alternative to fixed running communities.
-Educational Physics Website,1,about/images/physics-website.png,/physics,An interactive educational physics website.
-Asteroids Game,2,about/images/asteroids-website.png,/asteroids,A 'realistic' asteroids game with JavaScript 2D canvas.
+Runner,0,about/images/runner-website2.png,/runner,"My website alternative to fixed running communities built using Python Django. It uses the JavaScript library 'Leaflet' for handling and displaying maps along with the ability to display gpx route files. 
+
+I came up with the idea when I was looking for a local running club to join but found that all the weekly runs were not quite at the right times for me. I figured there's bound to be other local people that would like to run as part of a group but can't make these weekly runs, so I decided to make Runner as a solution for that. With Runner, anyone can lookup for events setup near them and join. "
+Educational Physics Website,1,about/images/physics-website.png,/physics,"An interactive educational physics website designed to make learning about the fundamental of our forces easier and more enjoyable.
+
+The main feature of the site is the ball physics simulator, which experiences the affects of gravity, friction, drag and buoyancy. The simulation can be customised to mimic different scenarios by changing properties such as the strength of gravity, the density of the fluid that ball is in, the density of the ball, and many others. 
+
+The simulator can also plot the balls position, velocity or acceleration against time to aid one's understanding and fuel one's curiosity.
+
+Along with the simulator, some basic lessons on each of the following are available: gravity; newton's first law; drag and friction; conservation of energy and momentum; and buoyancy.
+
+Initially I built it using Python Flask but then converted to Python Django so that it could be part of my portfolio. The simulator uses JavaScript's 2D canvas."
+Asteroids Game,2,about/images/asteroids-website2.png,/asteroids,"My 'realistic' version of asteroids where there is no drag/friction, and the controls change one's angular and spacial velocity rather than changing your position/angle. 
+
+This was initially part of my educational physics website but I realised that it didn't quite belong there and so I decided to list it as a project of it's own. 
+
+Made using JavaScript's 2D canvas."

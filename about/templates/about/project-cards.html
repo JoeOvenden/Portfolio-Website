@@ -12,8 +12,10 @@
                 <div id="img-container">
                     <img src="{% static card.image_link %}">
                 </div>
-                <div>
-                    <p id="description">{{ card.description }}</p>
+                <div id="descriptionDiv">
+                    {% for paragraph in card.description %}
+                        <p>{{ paragraph }}</p>
+                    {% endfor %}
                 </div>
             </div>
         </div>

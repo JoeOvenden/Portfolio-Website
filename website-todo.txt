@@ -10,10 +10,8 @@ Badges
 
 
 
------
-Start point for gpx file is currently bugged as it is showing the users location as the start location...
-Allow user to delete events
------
+
+- Remove/fix waypoints on some gpx files
 
 
 

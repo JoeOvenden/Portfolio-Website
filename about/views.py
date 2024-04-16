@@ -7,6 +7,8 @@ class Project_Card:
     def __init__(self, values):
         self.title, self.id, self.image_link, self.url, self.description = values
         self.id = int(self.id)
+        self.description = self.description.split("\n")
+        print(self.description)
 
 
 def get_project_cards():
