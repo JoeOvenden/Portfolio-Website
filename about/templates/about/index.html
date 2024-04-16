@@ -13,45 +13,10 @@
 
     </div>
 
-    <button id="nextButton">
-        Next
-    </button>
+    <button id="leftButton">Left</button>
+    <button id="rightButton">Right</button>
 
-    <script>
-
-        function moveElement(e, percentageChange) {
-            let currentRight = parseInt(e.style.right) || 0;
-            e.style.right = (currentRight + percentageChange) + '%';
-            console.log(e.style.right);
-        }
-
-        function getNextCard(currentId) {
-            let nextCard = document.getElementById(currentId + 1);
-            if (!nextCard) {       // If there is no project card with id, currentId + 1
-                nextCard = document.getElementById(0);
-            }
-            return nextCard;
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            let currentId = 0;
-            let currentCard = document.getElementById(`${currentId}`);
-            currentCard.style.display = "block";
-
-            let nextCard = getNextCard(currentId);
-            let nextButton = document.getElementById("nextButton");
-            nextCard.style.display = "block";
-
-            nextButton.addEventListener('click', () => {
-                let remainingPercent = 100;
-                for (let i = 0; i < 100; i++) {
-                    moveElement(currentCard, 1);
-                    moveElement(nextCard, 1);
-                    
-                }
-            });
-        });
-    
-    </script>
+    {% load static %}
+    <script src="{% static 'about/scripts/homepage.js' %}"></script>
     
 {% endblock %}
