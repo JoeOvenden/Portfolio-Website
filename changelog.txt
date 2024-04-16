@@ -1,3 +1,2 @@
-Fixes:
-    - New users are now assigned a valid avatar mouth. (They were being assigned a filename which had since be renamed)
-    - 
+- Changes to styling of portfolio about page.
+- Started fixing problem of "waypoint" markers in some gpx files.
