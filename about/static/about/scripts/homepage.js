@@ -90,8 +90,6 @@ class Banner {
         // this.currentShift = Math.pow(t, 0.2) * 100;                                                     // Root t
         this.currentShift = ( (-1 * (t ** 2)) + (2 * t)) * 100;                                            // Quadratic
 
-        console.log(this.currentShift);
-
         this.setShift();
         this.swapIfNeeded();
         requestAnimationFrame(this.slideBanner.bind(this));
