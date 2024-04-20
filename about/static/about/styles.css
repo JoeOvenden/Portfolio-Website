@@ -8,16 +8,6 @@ body {
   margin: 2%;
 }
 
-#leftRightButtonDiv button {
-  position: absolute;
-  top: 35%;
-  z-index: 3;
-  opacity: 0.5;
-}
-#leftRightButtonDiv #rightButton {
-  left: 95%;
-}
-
 .flex-row {
   display: flex;
 }
