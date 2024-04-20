@@ -1,2 +1,2 @@
-- Changes to styling of portfolio about page.
-- Started fixing problem of "waypoint" markers in some gpx files.
+- Can now use arrow keys to switch between project cards on portfolio landing page
+- Fixed bug where pressing one arrow key (or button) and then straight away the other would cause unintended behaviour.

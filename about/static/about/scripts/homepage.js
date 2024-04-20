@@ -96,12 +96,11 @@ class Banner {
     }
 
     switchCards(direction) {
-        this.direction = direction;
-
         if (this.isAnimating) {
             return;
         }
 
+        this.direction = direction;
         let nextCardId = (parseInt(this.currentCard.id) + this.direction).mod(this.cards.length);
         this.nextCard = document.getElementById(nextCardId);
 
@@ -119,6 +118,16 @@ class Banner {
         this.leftButton = document.getElementById("leftButton");
         this.leftButton.addEventListener('click', () => {
             this.switchCards(-1)
+        });
+
+        // Also add the ability to get next project card with arrow keys
+        document.addEventListener("keydown", e => {
+            if (e.key == "ArrowRight") {
+                this.switchCards(1)
+            }
+            else if (e.key == "ArrowLeft") {
+                this.switchCards(-1)
+            }
         });
     }
 }
