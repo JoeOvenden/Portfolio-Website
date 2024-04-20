@@ -14,7 +14,7 @@
 	path = vocabulary
 	url = https://github.com/JoeOvenden/Vocabulary-Practice
 	branch = main
-[submodule "JavaScript-Motorway"]
-	path = JavaScript-Motorway
+[submodule "motorway"]
+	path = motorway
 	url = https://github.com/JoeOvenden/JavaScript-Motorway
 	branch = main
