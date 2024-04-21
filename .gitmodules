@@ -18,3 +18,5 @@
 	path = motorway
 	url = https://github.com/JoeOvenden/JavaScript-Motorway
 	branch = main
+[submodule "JavaScript-Motorway"]
+	path = motorway

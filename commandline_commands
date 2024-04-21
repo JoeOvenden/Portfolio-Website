@@ -1,3 +1,4 @@
 node_modules/.bin/sass --watch about/static/about/styles.scss:about/static/about/styles.css
 node_modules/.bin/sass --watch runner/static/runner/styles/styles.scss:runner/static/runner/styles/styles.css
+node_modules/.bin/sass --watch motorway/static/motorway/styles/styles.scss:motorway/static/motorway/styles/styles.css
 ^ From dir Portfolio-Website
