@@ -10,7 +10,7 @@
             <h5><a href="{{ card.url }}">{{ card.title }}</a></h5>
             <div class="flex-row">
                 <div id="img-container">
-                    <img src="{% static card.image_link %}">
+                    <a href="{{ card.url }}"><img src="{% static card.image_link %}"></a>
                 </div>
                 <div id="descriptionDiv">
                     {% for paragraph in card.description %}

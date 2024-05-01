@@ -1,2 +1,3 @@
 - Can now use arrow keys to switch between project cards on portfolio landing page
 - Fixed bug where pressing one arrow key (or button) and then straight away the other would cause unintended behaviour.
+- Project card images now also have links to projects
