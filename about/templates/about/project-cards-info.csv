@@ -2,7 +2,7 @@ title,id,image_link,url,description
 Runner,0,about/images/runner-website2.png,/runner/events_search,"My website alternative to fixed running communities built using Python Django. It uses the JavaScript library 'Leaflet' for handling and displaying maps along with the ability to display gpx route files. 
 
 I came up with the idea when I was looking for a local running club to join but found that all the weekly runs were not quite at the right times for me. I figured there's bound to be other local people that would like to run as part of a group but can't make these weekly runs, so I decided to make Runner as a solution for that. With Runner, anyone can lookup for events setup near them and join. "
-Educational Physics Website,1,about/images/physics-website.png,/physics,"An interactive educational physics website designed to make learning about the fundamental of our forces easier and more enjoyable.
+Educational Physics Website,1,about/images/physics-website.png,/physics/simulator,"An interactive educational physics website designed to make learning about the fundamental of our forces easier and more enjoyable.
 
 The main feature of the site is the ball physics simulator, which experiences the affects of gravity, friction, drag and buoyancy. The simulation can be customised to mimic different scenarios by changing properties such as the strength of gravity, the density of the fluid that ball is in, the density of the ball, and many others. 
 
