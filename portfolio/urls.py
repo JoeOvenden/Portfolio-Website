@@ -26,6 +26,7 @@ urlpatterns = [
     path("physics/", include("physics.urls")),
     path("asteroids/", include("asteroids.urls")),
     path("motorway/", include("motorway.urls")),
+    path("vocabulary", include("vocabulary.urls")),
 ]
 
 if settings.DEBUG:

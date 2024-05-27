@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'asteroids',
     'about',
     'motorway',
+    'vocabulary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
